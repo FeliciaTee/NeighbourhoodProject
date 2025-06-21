@@ -64,20 +64,7 @@ ul {
     font-family: lucida console;
   }
 
-h1 {
-  align-items: center;
-  list-style-type: none;
-  display: flex;
-  background-color: #bcdd6f;
-  color: #000000;
-  justify-content: flex-start;
-  margin: 0;
-  padding: 10px 10px;
-  }
 
-  h1 a:hover{
-    background-color: #74dc6b;
-  }
   
   li {
     float: left;
