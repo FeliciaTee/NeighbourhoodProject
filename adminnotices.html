@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <title>Notice Management</title>
@@ -158,13 +158,13 @@
 <body>
 
 <div class="main">
-            <ul>
-               <img src="banner.png" alt="banner" width="300" height="200" class="banner">
-               <a href="index.html">Home</a>
-               <a href="about.html">About Us</a>
-               <a href="logout.html">Log Out</a>
-            </ul>
-        </div>
+    <ul>
+        <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="logout.php">Log Out</a></li>
+
+    </ul>
 </div>
 
 <div class="user-info">
@@ -190,7 +190,6 @@
     </ul>
 </div>
 
-
 <div class="content">
     <h2>Notice Management</h2>
 
@@ -212,7 +211,11 @@
             <p><strong>Created At:</strong> 2025-06-11 10:20:00<br>
                <strong>Updated At:</strong> 2025-06-11 10:20:00</p>
             <p><em>Published: June 10, 2025</em></p>
-            <button onclick="alert('Closing notice...')">Close Details</button>
+            
+            <!-- ✅ Modified Close Details Button -->
+            <button style="background-color: white; color: green; border: 2px solid green; padding: 10px 20px; border-radius: 8px; font-family: 'Lucida Console', monospace; font-size: 14px; cursor: pointer;" onclick="alert('Closing notice...')">
+                Close Details
+            </button>
         </div>
 
         <div class="report-image">
