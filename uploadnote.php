@@ -1,15 +1,20 @@
 <?php
 include 'connect.php';
 
-    $title = mysqli_real_escape_string($conn, $_POST['title']);
-    $content = mysqli_real_escape_string($conn, $_POST['content']);
+$title = $_POST['title'];
+$content = $_POST['content'];
 
-    $sql = "INSERT INTO notes (title, content) VALUES ('$title', '$content')";
-    
-    if (mysqli_query($conn, $sql)) {
-        echo "Note saved successfully!";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+$stmt = $conn->prepare("INSERT INTO notes (title, content) VALUES (?, ?)");
+$stmt->bind_param("ss", $title, $content);
+
+if ($stmt->execute()) {
+    echo "Note saved successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$conn->close();
 ?>
+
 

@@ -194,7 +194,7 @@
       </p>
 
       <!-- ✅ Borang Upload Nota -->
-      <form action="uploadnote.php" method="post">
+      <form id = "uploadnote" action="uploadnote.php" method="post">
         <input type="text" name="title" placeholder="Title" required><br>
         <textarea name="content" placeholder="Enter your note here..." rows="4" required></textarea><br>
         <button type="submit">Submit Note</button>
@@ -211,34 +211,34 @@
     © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
   </footer>
 
-  <!-- ✅ JavaScript untuk AJAX -->
+      <!-- ✅ JavaScript for AJAX functionality -->
   <script>
-    // Hantar borang
+    // Submit the form without reloading the page
     document.getElementById("uploadnote").addEventListener("submit", function(e) {
-      e.preventDefault();
+      e.preventDefault(); // Prevent page reload
       const formData = new FormData(this);
-      fetch("upload_notes.php", {
+
+      fetch("uploadnote.php", {
         method: "POST",
         body: formData
       })
       .then(response => response.text())
       .then(() => {
-        loadNotes();
-        this.reset();
+        loadNotes();      // Reload notes after submission
+        this.reset();     // Clear form
       });
     });
 
-    // Paparkan semula nota
+    // Load notes from server
     function loadNotes() {
-      fetch("get_notes.php")
+      fetch("getnote.php")
         .then(response => response.text())
         .then(data => {
           document.getElementById("notes-container").innerHTML = data;
         });
     }
 
-    // Muat naik nota sebaik saja laman dibuka
-    loadNotes();
+    loadNotes(); // Initial load on page open
   </script>
 </body>
 </html>
