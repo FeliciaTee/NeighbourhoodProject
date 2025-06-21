@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $address = trim($_POST['address']);
     $user_id = trim($_POST['user_id']);
-    $password = password_hash($_POST['psw'], PASSWORD_DEFAULT);
+    $password = $_POST['psw']; //pass enter will be same in db
 
     $sql = "INSERT INTO signup (name, email, address, user_id, password)
             VALUES ('$name', '$email', '$address', '$user_id', '$password')";
