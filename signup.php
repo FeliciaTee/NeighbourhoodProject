@@ -3,11 +3,11 @@ include 'connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $user_id = trim($_POST['user_id']); 
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $address = trim($_POST['address']);
-    $user_id = trim($_POST['user_id']); // Make sure form uses this exact name
-    $password = password_hash($_POST['psw'], PASSWORD_DEFAULT); // Secure password
+    $password = password_hash($_POST['psw'], PASSWORD_DEFAULT); 
 
     $sql = "INSERT INTO signup (name, email, address, user_id, password)
             VALUES ('$name', '$email', '$address', '$user_id', '$password')";
