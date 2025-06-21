@@ -1,0 +1,21 @@
+ body {
+            font-family: 'Lucida Console', monospace;
+            margin: 0;
+            background-color: #d4e5b3;
+            color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+ .header {
+            background-color: #addf83;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .banner-img {
+            width: 180px;
+            height: 80px;
+        }
