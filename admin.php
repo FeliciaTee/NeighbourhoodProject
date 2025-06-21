@@ -10,7 +10,7 @@
         <div class="main">
             <ul>
                 <img src="banner.png" alt="banner" class="banner">
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="logout.html">Log Out</a></li>
             </ul>
