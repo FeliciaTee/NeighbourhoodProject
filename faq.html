@@ -1,16 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel = stylesheet href="style.css">
 <head>
     <title>FAQ</title>
     <style>
+        body {
+            margin: 0;
+            font-family: "Lucida Console", monospace;
+            background-color: #b5dd97;
+        }
+
+        header {
+            background-color: #80c16d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .banner {
+            display: flex;
+            align-items: center;
+        }
+
+        .banner img {
+            height: 50px;
+            margin-right: 10px;
+        }
 
         nav a {
-            display: flex;
             margin: 0 10px;
             color: black;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #d5ecb3;
+            position: fixed;
+            top: 70px;
+            bottom: 0;
+            padding: 20px;
+            font-family: "Lucida Console", monospace;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .main {
+            margin-left: 230px;
+            padding: 20px;
+            font-family: "Lucida Console";
         }
 
         .faq-box {
@@ -49,76 +100,61 @@
     </style>
 </head>
 <body>
+
+<header>
+    <div class="banner">
+        <img src="banner.png" alt="banner">
+        <span>The Neighborhood: One-Stop Community Center</span>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="#">Log Out</a>
+    </nav>
+</header>
+
+<div class="sidebar">
+   
+    <ul>
+        <li><a href="report.html">Lodge Report</a></li>
+        <li><a href="#">Community Events</a></li>
+        <li><a href="#">Community Notes</a></li>
+        <li><a href="faq.html">Help & Support</a></li>
+        <li><a href="notification.html"><strong>Notifications</strong></a></li>
+    </ul>
+</div>
+
 <div class="main">
-            <ul>
-                <img src="banner.png" alt="banner" class="banner">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="signup.html">Sign Up </a></li>
-                <li><a href="adminlogin.html">Admin</a></li>
-                <li><a href="emergency.html">EMERGENCY</a></li>
-            </ul>
-        </div>
-
-         <h1>
-            <a href="adminprofile.html">
-            <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
-            </a>
-        </h1>
-
-         <div class="sidebar">
-        <ul>
-            <li><a href="report.html">
-            <img src="document.png" alt="report" class="report">
-            Lodge Report
-            </a></li>
-            <li><a href="communityevents.html">
-            <img src="bell.png" alt="communityevents" class="communityevents">
-            Community Events
-            </a></li>
-            <li><a href="communitynotes.html">
-            <img src="bell.png" alt="communitynotes" class="communitynotes">
-            Community Notes
-            <li><a href="faq.html">
-            <img src="notice.png" alt="faq" class="faq">
-            Help & Support
-            </a></li>
-             <li><a href="notification.html">
-            <img src="bell.png" alt="notification" class="notification">
-            Notifications
-        </ul>
-        </div> 
-
     <div class="faq-box">
         <h2>Help & Support</h2>
         <p>Frequently asked questions and support resources.</p>
 
         <details>
             <summary>How do I lodge a report?</summary>
-            <p> Go to the "Lodge a Report" section from the main menu. Fill in the details of the issue, attach photos if needed, and click Submit.</p>
+            <p> 1 2 3 4 5 </p>
         </details>
 
         <details>
             <summary>Where can I find information about upcoming events?</summary>
-            <p>All upcoming community events can be found in the "Community Events" section.</p>
+            <p>ha ha ha ha</p>
         </details>
 
         <details>
             <summary>What kind of issues can I report?</summary>
-            <p>Residents can report community-related concerns such as broken streetlights, water leakage, cleanliness issues, security concerns, noise complaints and others.</p>
+            <p>pothole, vandalisme, road bully and much more.</p>
         </details>
 
         <details>
             <summary>Is my report anonymous?</summary>
-            <p> Yes, you can choose to submit your report anonymously. However, providing your details can help the management follow up more effectively.</p>
+            <p> nahhh gorl</p>
         </details>
 
         <details>
             <summary>How long does it take for a report to be addressed?</summary>
-            <p>Reports are typically reviewed within 2-3 working days. Urgent issues may receive faster attention.</p>
+            <p>insha allah 2 jam settle boh</p>
         </details>
     </div>
-
+</div>
 
 <footer>
     © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
