@@ -9,6 +9,9 @@
             margin: 0;
             background-color: #d4e5b3;
             color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
@@ -36,13 +39,18 @@
             padding: 10px 20px;
         }
 
+        .main-container {
+            flex: 1;
+            display: flex;
+            height: 100%;
+        }
+
         .sidebar {
             width: 220px;
             background-color: #d5ecb3;
-            float: left;
-            height: 108vh;
             padding: 20px 0;
             box-sizing: border-box;
+            height: 100vh;
         }
 
         .sidebar ul {
@@ -77,8 +85,9 @@
         }
 
         .content {
-            margin-left: 240px;
+            flex: 1;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .report-box {
@@ -128,87 +137,97 @@
             background-color: #aedc9c;
         }
 
+        .close-btn {
+            background-color: white;
+            color: #1e7d3e;
+            border: 1px solid #1e7d3e;
+            padding: 8px 16px;
+            font-family: "Lucida Console";
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #e1f5e8;
+        }
+
         footer {
             background-color: #b4cd63;
             color: #000;
             text-align: center;
             padding: 15px;
-            margin-top: 40px;
-            clear: both;
         }
     </style>
 </head>
 <body>
 
-
-<div class="header">
-    <img src="banner.png" alt="Banner" class="banner-img">
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="#">Log Out</a>
-    </div>
+<div class="main">
+    <ul>
+        <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="logout.php">Log Out</a></li>
+    </ul>
 </div>
-
 
 <div class="user-info">
     <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
     <strong>Username</strong><br>
     <strong>example@gmail.com</strong><br>
-</div> 
-
-
-<div class="sidebar">
-    <ul>
-        <li><a href="uploadedreports.html" class="active">
-            <img src="document.png" alt="Uploaded Reports" class="icon">
-            Uploaded Reports
-        </a></li>
-        <li><a href="managenotes.html">
-            <img src="bell.png" alt="Manage Notes" class="icon">
-            Manage Notes
-        </a></li>
-        <li><a href="noticeboard.html">
-            <img src="notice.png" alt="Notice Board" class="icon">
-            Notice Board
-        </a></li>
-    </ul>
 </div>
 
-
-<div class="content">
-    <h2>Resident Reports</h2>
-
-    <div class="report-box">
-        <div class="report-details">
-            <h3>Pothole Report</h3>
-            <p><a href="#">Large Pothole on Jalan Seri Ehsan 2</a></p>
-            <p><strong>Report ID:</strong> RPT20250611001<br>
-               <strong>Resident ID:</strong> RES108235</p>
-            <p><strong>Description:</strong><br>
-                A pothole approximately 60 cm wide and 15 cm deep is located in front of Surau Al-Hijrah, along Jalan Seri Ehsan 2. It has caused cars to swerve dangerously and poses a safety hazard, especially during rain when it becomes less visible.
-            </p>
-            <p>
-                <strong>Category:</strong> Road Damage – Pothole<br>
-                <strong>Location:</strong> Jalan Seri Ehsan 2, in front of Surau Al-Hijrah, Bandar Seri Ehsan, 42600 Jenjarom, Selangor.<br>
-                <strong>Status:</strong> Pending Review<br>
-                <strong>Date Created:</strong> 2025-06-11<br>
-                <strong>Date Updated:</strong> 2025-06-11
-            </p>
-            <p><em>Updated: June 10, 2025</em></p>
-            <button onclick="alert('Closing report...')">Close Report</button>
-        </div>
-        <div class="report-image">
-            <img src="placeholder.png" alt="Photo" width="100">
-        </div>
+<div class="main-container">
+    <div class="sidebar">
+        <ul>
+            <li><a href="uploadedreports.html" class="active">
+                <img src="document.png" alt="Uploaded Reports" class="icon">
+                Uploaded Reports
+            </a></li>
+            <li><a href="managenotes.html">
+                <img src="bell.png" alt="Manage Notes" class="icon">
+                Manage Notes
+            </a></li>
+            <li><a href="noticeboard.html">
+                <img src="notice.png" alt="Notice Board" class="icon">
+                Notice Board
+            </a></li>
+        </ul>
     </div>
 
-    <div class="btn-group">
-        <button>🔄 Update</button>
-        <button>🗑️ Delete</button>
+    <div class="content">
+        <h2>Resident Reports</h2>
+
+        <div class="report-box">
+            <div class="report-details">
+                <h3>Pothole Report</h3>
+                <p><a href="#">Large Pothole on Jalan Seri Ehsan 2</a></p>
+                <p><strong>Report ID:</strong> RPT20250611001<br>
+                   <strong>Resident ID:</strong> RES108235</p>
+                <p><strong>Description:</strong><br>
+                    A pothole approximately 60 cm wide and 15 cm deep is located in front of Surau Al-Hijrah, along Jalan Seri Ehsan 2. It has caused cars to swerve dangerously and poses a safety hazard, especially during rain when it becomes less visible.
+                </p>
+                <p>
+                    <strong>Category:</strong> Road Damage – Pothole<br>
+                    <strong>Location:</strong> Jalan Seri Ehsan 2, in front of Surau Al-Hijrah, Bandar Seri Ehsan, 42600 Jenjarom, Selangor.<br>
+                    <strong>Status:</strong> Pending Review<br>
+                    <strong>Date Created:</strong> 2025-06-11<br>
+                    <strong>Date Updated:</strong> 2025-06-11
+                </p>
+                <p><em>Updated: June 10, 2025</em></p>
+                <button class="close-btn" onclick="alert('Closing report...')">Close Report</button>
+            </div>
+            <div class="report-image">
+                <img src="placeholder.png" alt="Photo" width="100">
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button>🔄 Update</button>
+            <button>🗑️ Delete</button>
+        </div>
     </div>
 </div>
-
 
 <footer>
     <p>&copy; 2025 The Neighborhood Community Center. All rights reserved.</p>
@@ -216,4 +235,5 @@
 
 </body>
 </html>
+
 

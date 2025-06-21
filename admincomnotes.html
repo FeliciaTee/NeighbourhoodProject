@@ -9,6 +9,14 @@
             margin: 0;
             background-color: #d4e5b3;
             color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
         }
 
         .header {
@@ -20,8 +28,8 @@
         }
 
         .banner-img {
-            width: 300px;
-            height: 200px;
+            width: 180px;
+            height: 80px;
         }
 
         .nav-links a {
@@ -39,8 +47,6 @@
         .sidebar {
             width: 220px;
             background-color: #d5ecb3;
-            float: left;
-            height: 108vh;
             padding: 20px 0;
             box-sizing: border-box;
         }
@@ -70,15 +76,10 @@
             color: #016b5b;
         }
 
-        .sidebar a .icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-        }
-
         .content {
-            margin-left: 240px;
+            flex: 1;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .note-box {
@@ -133,13 +134,27 @@
             background-color: #aedc9c;
         }
 
+        /* Custom style for Close Details button */
+        .close-btn {
+            background-color: white;
+            color: #1e7d3e;
+            border: 1px solid #1e7d3e;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-family: "Lucida Console";
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            background-color: #e1f5e8;
+        }
+
         footer {
             background-color: #b4cd63;
             color: #000;
             text-align: center;
             padding: 15px;
-            margin-top: 40px;
-            clear: both;
         }
     </style>
 </head>
@@ -147,12 +162,13 @@
 
 
 <div class="main">
-            <ul>
-               <li> <img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul>
-        </div>
+    <ul>
+        <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="logout.php">Log Out</a></li>
+
+    </ul>
 </div>
 
 
@@ -160,65 +176,70 @@
     <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
     <strong>Username</strong><br>
     <strong>example@gmail.com</strong><br>
-
-</div>      
-
-<div class="sidebar">
-    <ul>
-        <li><a href="uploadedreports.html">
-            <img src="document.png" alt="Uploaded Reports" class="icon">
-            Uploaded Reports
-        </a></li>
-        <li><a href="managenotes.html" class="active">
-            <img src="bell.png" alt="Manage Notes" class="icon">
-            Manage Notes
-        </a></li>
-        <li><a href="noticeboard.html">
-            <img src="notice.png" alt="Notice Board" class="icon">
-            Notice Board
-        </a></li>
-    </ul>
 </div>
 
 
-<div class="content">
-    <h2>Community Notes</h2>
-    <h3>Maintenance Alert</h3>
+<div class="main-container">
+    
+    <div class="sidebar">
+        <ul>
+            <li><a href="uploadedreports.html">
+                <img src="document.png" alt="Uploaded Reports" class="icon" width="24" height="24">
+                Uploaded Reports
+            </a></li>
+            <li><a href="managenotes.html" class="active">
+                <img src="bell.png" alt="Manage Notes" class="icon" width="24" height="24">
+                Manage Notes
+            </a></li>
+            <li><a href="noticeboard.html">
+                <img src="notice.png" alt="Notice Board" class="icon" width="24" height="24">
+                Notice Board
+            </a></li>
+        </ul>
+    </div>
 
-    <div class="note-box">
-        <div class="note-details">
-            <p><a href="#">Water Supply Interruption for Pipe Maintenance</a></p>
-            <p><strong>Note ID:</strong> NOTE20250611001<br>
-               <strong>Resident ID:</strong> RES100235</p>
-            <p>
-                Please be informed that there will be a scheduled water supply interruption on 
-                <strong style="color: red;">13 June 2025 (Thursday)</strong> from 
-                <strong style="color: red;">9:00 AM to 4:00 PM</strong> due to maintenance work 
-                on the main water pipe near Jalan Seri Ehsan 5. Residents are advised to store 
-                enough water in advance and ensure all taps are closed during the maintenance 
-                period. We apologize for any inconvenience caused.
-            </p>
-            <div class="meta-info">
-                Created At: 2025-06-11 08:45:00<br>
-                Updated At: 2025-06-11 08:45:00
+   
+    <div class="content">
+        <h2>Community Notes</h2>
+        <h3>Maintenance Alert</h3>
+
+        <div class="note-box">
+            <div class="note-details">
+                <p><a href="#">Water Supply Interruption for Pipe Maintenance</a></p>
+                <p><strong>Note ID:</strong> NOTE20250611001<br>
+                   <strong>Resident ID:</strong> RES100235</p>
+                <p>
+                    Please be informed that there will be a scheduled water supply interruption on 
+                    <strong style="color: red;">13 June 2025 (Thursday)</strong> from 
+                    <strong style="color: red;">9:00 AM to 4:00 PM</strong> due to maintenance work 
+                    on the main water pipe near Jalan Seri Ehsan 5. Residents are advised to store 
+                    enough water in advance and ensure all taps are closed during the maintenance 
+                    period. We apologize for any inconvenience caused.
+                </p>
+                <div class="meta-info">
+                    Created At: 2025-06-11 08:45:00<br>
+                    Updated At: 2025-06-11 08:45:00
+                </div>
+                <p class="meta-info">1 hour ago</p>
+                <button class="close-btn" onclick="alert('Closing details...')">Close Details</button>
             </div>
-            <p class="meta-info">1 hour ago</p>
-            <button onclick="alert('Closing details...')">Close Details</button>
+            <div class="note-image">
+                <img src="placeholder.png" alt="Note Image" width="100">
+            </div>
         </div>
-        <div class="note-image">
-            <img src="placeholder.png" alt="Note Image" width="100">
-        </div>
-    </div>
 
-    <div class="btn-group">
-        <button>🚩 Flag</button>
-        <button>🗑️ Delete</button>
+        <div class="btn-group">
+            <button>🚩 Flag</button>
+            <button>🗑️ Delete</button>
+        </div>
     </div>
 </div>
+
 
 <footer>
-    <p>&copy; 2025 The NeighborHood Bandar Seri Ehsan. All rights reserved.</p>
+    <p>&copy; 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.</p>
 </footer>
 
 </body>
 </html>
+
