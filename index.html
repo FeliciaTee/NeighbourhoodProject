@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>THE NEIGHBOURHOOD</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+     body {
+            font-family: "lucida console";
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color:#d2e38d;
+            color: #333;
+        }
+
+        .flex-container {
+          display: flex;
+         background-color: #d2e38d88;
+         }
+
+           .banner1 {
+            display: block;
+            margin: 20px auto;
+        }
+
+         .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        
+        
+        .login-box {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-box input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-box button {
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        div.scroll-container {
+  background-color: #a3ca99;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+}
+.newsbox {
+      margin: 20px;
+      margin-top: 0;
+      padding: 20px;
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      border-radius: 10px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .newsbox h3 {
+      margin-top: 0;
+    }
+    .h2 {
+      background-color: #bcdd6f;
+            color: #000000;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+    }
+
+    
+</style>
+</head>
+
+<body>
+        <div class="main">
+            <ul>
+                <img src="banner.png" alt="banner" class="banner">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="signup.html">Sign Up </a></li>
+                <li><a href="#">Log in</a></li>
+                <li><a href="adminlogin.html">Admin</a></li>
+                <li><a href="emergency.html">EMERGENCY</a></li>
+            </ul>
+        </div>
+    
+ <img src="banner1.png" alt="banner" width="500" height="250" class="banner1">
+      
+
+      <div class="scroll-container">
+    <img src="iklan1.png" alt="iklan1" width="300" height="200">
+    <img src="rent.png" alt="rent" width="300" height="200">
+    <img src="iklan2.png" alt="iklan2" width="300" height="200">
+  </div>
+   
+    
+  <div class="flex-container">
+     <div class="container">
+        <div class="sidebar">
+            <h3>Login</h3>
+           <form class="login-box" action="login.php" method="post">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+    <p>Dont have an account? <a href="signup.html" style="color:dodgerblue">Sign Up !</a></p>
+</form>
+
+
+              </div>
+     </div>
+      
+  <div class="newsbox">
+    <h3>What's New</h3>
+    <ul>
+      <li>Community complaint system improved</li>
+      <li>New listings added for rental homes</li>
+      <li>Emergency contact info updated</li>
+     
+    </ul>
+  </div>
+</div>
+  <footer>
+        <div class="contact-map-wrapper">
+            <div class="contact-info">
+                <div>
+                    <span class="contact-label">Email Address</span>
+                    <span>info@bandarseriehsan.my</span>
+                </div>
+                <div>
+                    <span class="contact-label">Phone Number</span>
+                    <span>+603 8706 9876</span>
+                </div>
+                <div>
+                    <span class="contact-label">Office Address</span>
+                    <span>No. 21 4/47, Jalan BSE, Bandar Seri Ehsan 42700 Banting, Kuala Langat, Selangor</span>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4286.120030556036!2d101.62837427529254!3d2.7696796972074273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdbe8e271dca95%3A0xf5327d71e6fb24cd!2s21%2C%20Jalan%20Bse%204%2F47%2C%20Bandar%20Seri%20Ehsan%2C%2042700%20Banting%2C%20Selangor!5e1!3m2!1sen!2smy!4v1749486906990!5m2!1sen!2smy" 
+                    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="copyright">
+            <div>English</div>
+            <div>© 2025 The Neighborhood Bandar Seri Ehsan.</div>
+            <div>theneighborhood.bhs</div>
+        </div>
+    </footer>
+</body>
+</html>
