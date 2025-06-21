@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Notification</title>
+    <meta charset="UTF-8">
+    <title>Notifications</title>
     <style>
         body {
             margin: 0;
@@ -15,6 +16,11 @@
             align-items: center;
             justify-content: space-between;
             padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
         }
 
         .banner {
@@ -27,6 +33,11 @@
             margin-right: 10px;
         }
 
+        header span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
         nav a {
             margin: 0 10px;
             color: black;
@@ -35,12 +46,19 @@
         }
 
         .sidebar {
-            width: 200px;
+            width: 180px;
             background-color: #d5ecb3;
             position: fixed;
             top: 70px;
             bottom: 0;
+            left: 0;
             padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar p {
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .sidebar ul {
@@ -60,14 +78,11 @@
         .main {
             margin-left: 230px;
             padding: 20px;
+            padding-top: 100px;
         }
 
         h2 {
             color: #444;
-        }
-
-        .section {
-            margin-bottom: 30px;
         }
 
         .cards {
@@ -114,16 +129,6 @@
             cursor: pointer;
         }
 
-        footer {
-            text-align: center;
-            background-color: #a4d373;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            left: 240px;
-            right: 0;
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -152,6 +157,24 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .scroll-container {
+            background-color: #69bc55;
+            overflow: auto;
+            white-space: nowrap;
+            padding: 10px;
+        }
+
+        .scroll-container img {
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #a4d373;
+            padding: 20px;
+            margin-left: 40px;
+        }
     </style>
 </head>
 <body>
@@ -164,13 +187,14 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="#">Log Out</a>
+        <a href="logout.php">Log Out</a>
     </nav>
 </header>
 
 <div class="sidebar">
+    <p><?php echo $_SESSION['admin_name']; ?><br><?php echo $_SESSION['admin_email']; ?></p>
     <ul>
-        <li><a href="#">Lodge Report</a></li>
+        <li><a href="report.html">Lodge Report</a></li>
         <li><a href="#">Community Events</a></li>
         <li><a href="#">Community Notes</a></li>
         <li><a href="faq.html">Help & Support</a></li>
@@ -180,81 +204,68 @@
 
 <div class="main">
     <h2>Notifications</h2>
-
-    <div class="section">
-        <h3>Event Reminders</h3>
-        <div class="cards">
-
-            <!-- Card 1 -->
-            <div class="card">
-                <img src="cleanup.png" alt="cleanup">
-                <div class="card-content">
-                    <h4>BSE COMMUNITY CLEANUP 2025</h4>
-                    <p>Organized by Community Association of BSE</p>
-                    <button class="openModalBtn" data-modal="modal-cleanup">See Details</button>
-                </div>
+    <div class="cards">
+        <div class="card">
+            <img src="cleanup.png" alt="cleanup">
+            <div class="card-content">
+                <h4>BSE COMMUNITY CLEANUP 2025</h4>
+                <p>Organized by Community Association of BSE</p>
+                <button class="openModalBtn" data-modal="modal-cleanup">See Details</button>
             </div>
-
-            <!-- Card 2 -->
-            <div class="card">
-                <img src="tax.jpg" alt="tax">
-                <div class="card-content">
-                    <h4>Property Tax Payment</h4>
-                    <p>Majlis Perbandaran Kuala Langat</p>
-                    <button class="openModalBtn" data-modal="modal-tax">See Details</button>
-                </div>
-            </div>
-
-             <div class="card">
-                <img src="communitycenter.jpg" alt="dewan">
-                <div class="card-content">
-                    <h4>NOW OPEN: DEWAN BSE</h4>
-<p>A new multipurpose hall for events, meetings, and community activities.</p>
-
-                    <button class="openModalBtn" data-modal="modal-dewan">See Details</button>
-                </div>
-            </div>
-
         </div>
+
+        <div class="card">
+            <img src="tax.jpg" alt="tax">
+            <div class="card-content">
+                <h4>Property Tax Payment</h4>
+                <p>Majlis Perbandaran Kuala Langat</p>
+                <button class="openModalBtn" data-modal="modal-tax">See Details</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="communitycenter.jpg" alt="dewan">
+            <div class="card-content">
+                <h4>NOW OPEN: DEWAN BSE</h4>
+                <p>A new multipurpose hall for events, meetings, and community activities.</p>
+                <button class="openModalBtn" data-modal="modal-dewan">See Details</button>
+            </div>
+        </div>
+    </div>
+
+    <h2>Community Ads</h2>
+    <div class="scroll-container">
+        <img src="iklan1.png" alt="Clothing Sale Poster" width="300" height="200">
+        <img src="rent.png" alt="Room for Rent Ad" width="300" height="200">
+        <img src="iklan2.png" alt="Food Delivery Promo" width="300" height="200">
     </div>
 </div>
 
-<!-- Modal for Cleanup -->
+<!-- Modals -->
 <div id="modal-cleanup" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>BSE COMMUNITY CLEAN UP 2025</h2>
-        <p>
-            25 June 2025<br><br>
-            Join us for the BSE Community Cleanup: bring your own cleaning tools, wear proper attire, and enjoy a free breakfast as we work together to keep our neighborhood clean!
-        </p>
+        <p>25 June 2025<br><br>
+        Join us for the BSE Community Cleanup: bring your own cleaning tools, wear proper attire, and enjoy a free breakfast as we work together to keep our neighborhood clean!</p>
     </div>
 </div>
 
-<!-- Modal for Tax -->
 <div id="modal-tax" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Property Tax Payment</h2>
-        <p>
-            Friendly reminder to settle your property tax with MPKL before the due date to avoid late penalties.
-        </p>
+        <p>Friendly reminder to settle your property tax with MPKL before the due date to avoid late penalties.</p>
     </div>
 </div>
 
-<!-- Modal for dewan -->
 <div id="modal-dewan" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-       <h2>Soft Launch: Dewan BSE</h2>
-<p>
-    You're invited to the Soft Launch for Dewan BSE on 5th July 2025, come celebrate this new community space with us!
-</p>
-
+        <h2>Soft Launch: Dewan BSE</h2>
+        <p>You're invited to the Soft Launch for Dewan BSE on 5th July 2025, come celebrate this new community space with us!</p>
     </div>
 </div>
-
-
 
 <footer>
     © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
@@ -265,7 +276,6 @@
     const modals = document.querySelectorAll(".modal");
     const closes = document.querySelectorAll(".close");
 
-    // Open modal
     buttons.forEach(button => {
         button.onclick = function () {
             const modalId = this.getAttribute("data-modal");
@@ -273,14 +283,12 @@
         }
     });
 
-    // Close modal on 'x'
     closes.forEach(closeBtn => {
         closeBtn.onclick = function () {
             this.closest(".modal").style.display = "none";
         }
     });
 
-    // Close modal when clicking outside
     window.onclick = function (event) {
         modals.forEach(modal => {
             if (event.target === modal) {
