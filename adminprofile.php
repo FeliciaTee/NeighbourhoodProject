@@ -6,23 +6,26 @@
 </head>
 
 <body>
+    <header>
         <div class="main">
             <ul>
-                <img src="banner.png" alt="banner" class="banner">
-                <li><a href="#">Home</a></li>
+                <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="logout.html">Log Out</a></li>
+                <li><a href="logout.php">Log Out</a></li>
             </ul>
         </div>
 
-        <h1 class="header-bar">
-            <a href="adminprofile.html">
-            <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
-            </a>
-             <span class="welcome-text">Welcome, Admin!</span>
-        </h1>
+        <div class="user-info">
+            <a href="adminprofile.php"><img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile"></a>
+            <div>
+                <strong>Username</strong>
+                <strong>example@gmail.com</strong>
+            </div>
+        </div>
+    </header>
 
-        <div class="dashboard">
+    <div class="dashboard">
         <div class="sidebar">
         <ul>
             <li><a href="uploadedreports.html">

@@ -3,6 +3,8 @@
 <head>
     <title>Admin Reports</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <style>
         body {
             font-family: 'Lucida Console', monospace;
@@ -34,15 +36,9 @@
             font-weight: bold;
         }
 
-        .user-info {
-            background-color: #b7e685;
-            padding: 10px 20px;
-        }
-
         .main-container {
             flex: 1;
             display: flex;
-            height: 100%;
         }
 
         .sidebar {
@@ -87,7 +83,6 @@
         .content {
             flex: 1;
             padding: 20px;
-            overflow-y: auto;
         }
 
         .report-box {
@@ -158,42 +153,20 @@
             text-align: center;
             padding: 15px;
         }
+
+        #adminReport {
+            background-color: #c4edb7;
+            color: #016b5b;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="main">
-    <ul>
-        <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="logout.php">Log Out</a></li>
-    </ul>
-</div>
-
-<div class="user-info">
-    <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
-    <strong>Username</strong><br>
-    <strong>example@gmail.com</strong><br>
-</div>
+<?php include("header.html"); ?>
 
 <div class="main-container">
-    <div class="sidebar">
-        <ul>
-            <li><a href="uploadedreports.html" class="active">
-                <img src="document.png" alt="Uploaded Reports" class="icon">
-                Uploaded Reports
-            </a></li>
-            <li><a href="managenotes.html">
-                <img src="bell.png" alt="Manage Notes" class="icon">
-                Manage Notes
-            </a></li>
-            <li><a href="noticeboard.html">
-                <img src="notice.png" alt="Notice Board" class="icon">
-                Notice Board
-            </a></li>
-        </ul>
-    </div>
+    <?php include("adminSidebar.php"); ?>
 
     <div class="content">
         <h2>Resident Reports</h2>
