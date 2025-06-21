@@ -1,28 +1,24 @@
 <?php
-// 1. Include the database connection
 include 'connect.php';
 
-// 2. Check if the form was submitted using POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // 3. Retrieve form data
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $address = trim($_POST['address']);
-    $user_ID = trim($_POST['Id']);
-    $password = password_hash($_POST['psw'], PASSWORD_DEFAULT); // encrypt password
+    $user_id = trim($_POST['user_id']); // Make sure form uses this exact name
+    $password = password_hash($_POST['psw'], PASSWORD_DEFAULT); // Secure password
 
-    // 4. Insert data into the database
-    $sql = "INSERT INTO signup (name, email, address, User ID, password)
-            VALUES ('$name', '$email', '$address', '$user_ID', '$password')";
+    $sql = "INSERT INTO signup (name, email, address, user_id, password)
+            VALUES ('$name', '$email', '$address', '$user_id', '$password')";
 
-    if ($signup->query($sql) === TRUE) {
-        echo "Signup successful!";
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>alert('Signup successful!'); window.location.href='index.html';</script>";
     } else {
-        echo "Error: " . $signup->error;
+        echo "Error: " . $conn->error;
     }
 
-    // 5. Close connection (optional but recommended)
-    $signup->close();
+    $conn->close();
 }
 ?>
+
