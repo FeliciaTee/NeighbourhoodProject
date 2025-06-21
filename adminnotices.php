@@ -3,6 +3,8 @@
 <head>
     <title>Notice Management</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <style>
         body {
             font-family: 'Lucida Console', monospace;
@@ -39,10 +41,9 @@
         .sidebar {
             width: 220px;
             background-color: #d5ecb3;
-            float: left;
-            height: 108vh;
             padding: 20px 0;
             box-sizing: border-box;
+            height: 100vh;
         }
 
         .sidebar ul {
@@ -153,42 +154,20 @@
             margin-top: 40px;
             clear: both;
         }
+
+        #adminNotices {
+            background-color: #c4edb7;  
+            color: #016b5b;
+        }
     </style>
 </head>
 <body>
 
-<div class="main">
-    <ul>
-        <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="logout.php">Log Out</a></li>
+<?php include("header.html"); ?>
 
-    </ul>
-</div>
-
-<div class="user-info">
-    <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
-    <strong>Username</strong><br>
-    <strong>example@gmail.com</strong><br>
-</div>
-
-<div class="sidebar">
-    <ul>
-        <li><a href="uploadedreports.html">
-            <img src="document.png" alt="Uploaded Reports" class="icon">
-            Uploaded Reports
-        </a></li>
-        <li><a href="managenotes.html" class="active">
-            <img src="bell.png" alt="Manage Notes" class="icon">
-            Manage Notes
-        </a></li>
-        <li><a href="noticeboard.html">
-            <img src="notice.png" alt="Notice Board" class="icon">
-            Notice Board
-        </a></li>
-    </ul>
-</div>
+<div class="main-container">
+    
+<?php include("adminSidebar.php"); ?>
 
 <div class="content">
     <h2>Notice Management</h2>

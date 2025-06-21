@@ -3,6 +3,8 @@
 <head>
     <title>Community Notes</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <style>
         body {
             font-family: 'Lucida Console', monospace;
@@ -49,6 +51,7 @@
             background-color: #d5ecb3;
             padding: 20px 0;
             box-sizing: border-box;
+            height: 100vh;
         }
 
         .sidebar ul {
@@ -74,6 +77,12 @@
         .sidebar a.active {
             background-color: #b4efbb;
             color: #016b5b;
+        }
+
+        .sidebar a .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
         }
 
         .content {
@@ -156,47 +165,22 @@
             text-align: center;
             padding: 15px;
         }
+
+        #adminComnotes {
+            background-color: #c4edb7;
+            color: #016b5b;
+        }
     </style>
 </head>
 <body>
 
 
-<div class="main">
-    <ul>
-        <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="logout.php">Log Out</a></li>
-
-    </ul>
-</div>
-
-
-<div class="user-info">
-    <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
-    <strong>Username</strong><br>
-    <strong>example@gmail.com</strong><br>
-</div>
+<?php include("header.html"); ?>
 
 
 <div class="main-container">
     
-    <div class="sidebar">
-        <ul>
-            <li><a href="uploadedreports.html">
-                <img src="document.png" alt="Uploaded Reports" class="icon" width="24" height="24">
-                Uploaded Reports
-            </a></li>
-            <li><a href="managenotes.html" class="active">
-                <img src="bell.png" alt="Manage Notes" class="icon" width="24" height="24">
-                Manage Notes
-            </a></li>
-            <li><a href="noticeboard.html">
-                <img src="notice.png" alt="Notice Board" class="icon" width="24" height="24">
-                Notice Board
-            </a></li>
-        </ul>
-    </div>
+<?php include("adminSidebar.php"); ?>
 
    
     <div class="content">
