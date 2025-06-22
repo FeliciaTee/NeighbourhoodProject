@@ -29,6 +29,8 @@ if ($result->num_rows === 1) {
     $_SESSION['resident_id'] = $row['resident_id'];
     $_SESSION['username'] = $row['username'];
     $_SESSION['name'] = $row['name'];
+    $_SESSION['email'] = $row['email'];
+
 
     // Create formatted ID like R001
     $_SESSION['formatted_id'] = 'R' . str_pad($row['resident_id'], 3, '0', STR_PAD_LEFT);
