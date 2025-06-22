@@ -2,27 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="adminstyle.css">
 </head>
 
 <body>
     <header>
         <div class="main">
             <ul>
-                <li><img src="banner.png" alt="banner" width="300" height="200" class="banner"></li>
+                <img src="banner.png" alt="banner" class="banner">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
         </div>
 
-        <div class="user-info">
-            <a href="adminprofile.php"><img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile"></a>
-            <div>
-                <strong>Username</strong>
-                <strong>example@gmail.com</strong>
-            </div>
-        </div>
+        <h1>
+            <a href="adminprofile.php">
+            <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
+            </a>
+        </h1>
     </header>
 
     <div class="dashboard">
@@ -147,7 +145,7 @@
     localStorage.setItem("address", address);
   });
 
-        </script>
+</script>
 <footer>
     © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
 </footer>

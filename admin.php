@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="adminstyle.css">
 
 </head>
 
@@ -12,12 +12,12 @@
                 <img src="banner.png" alt="banner" class="banner">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="logout.html">Log Out</a></li>
+                <li><a href="logout.php">Log Out</a></li>
             </ul>
         </div>
 
         <h1>
-            <a href="adminprofile.html">
+            <a href="adminprofile.php">
             <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
             </a>
         </h1>
