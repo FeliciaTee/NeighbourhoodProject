@@ -1,13 +1,21 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 include 'connect.php';
 
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
-    $title = $_POST['title'];
-    $user_id = $_POST['id'];
-    $category = $_POST['category'];
-    $location = $_POST['location'];
-    $description = $_POST['description'];
+
+    $title = trim($_POST['title']);
+    $user_id = trim($_POST['id']);
+    $category = trim($_POST['category']);
+    $location = trim($_POST['location']);
+    $description = trim($_POST['description']);
+
 
     $imagePath = '';
     if (!empty($_FILES['image']['name'])) {
