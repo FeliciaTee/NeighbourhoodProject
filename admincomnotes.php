@@ -3,6 +3,7 @@
 <head>
     <title>Community Notes</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="adminstyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>

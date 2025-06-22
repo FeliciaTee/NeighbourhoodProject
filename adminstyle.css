@@ -410,3 +410,11 @@ button {
             font-size: 14px;
             color: #666;
         }
+
+        .header {
+            background-color: #addf83;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
