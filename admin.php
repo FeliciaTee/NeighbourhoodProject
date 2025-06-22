@@ -18,7 +18,7 @@
 
         <h1>
             <a href="adminprofile.php">
-            <img src="circle-user.png" alt="userprofile" width="40" height="40" class="userprofile">
+            <img src="circle-user.png" alt="user profile" width="40" height="40" class="userprofile">
             </a>
         </h1>
 
