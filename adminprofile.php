@@ -34,7 +34,7 @@
             <img src="bell.png" alt="managenotes" class="managenotes">
             Manage Notes
             </a></li>
-            <li><a href="noticeboard.html">
+            <li><a href="noticeboard.php">
             <img src="notice.png" alt="noticeboard" class="noticeboard">
             Notice Board
             </a></li>
