@@ -52,7 +52,7 @@ $result = $conn->query($sql);
   <div class="main">
     <ul>
       <img src="banner.png" alt="banner" width="200" height="100" class="banner">
-      <li><a href="#">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="logout.php">Log Out</a></li>
     </ul>
@@ -116,6 +116,9 @@ $result = $conn->query($sql);
     </div>
   </div>
 </body>
+<footer>
+    © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
+</footer>
 </html>
 
 <?php
