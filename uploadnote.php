@@ -1,27 +1,20 @@
 <?php
+session_start();
 include 'connect.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['title']) && !empty($_POST['content'])) {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-
-        $stmt = $conn->prepare("INSERT INTO notes (title, content) VALUES (?, ?)");
-        $stmt->bind_param("ss", $title, $content);
-
-        if ($stmt->execute()) {
-            echo "Note saved successfully!";
-        } else {
-            echo "Error: " . $stmt->error;
-        }
-
-        $stmt->close();
-    } else {
-        echo "Missing value in the form!";
-    }
+if (!isset($_SESSION['resident_id'])) {
+    echo "Unauthorized.";
+    exit();
 }
 
-$conn->close();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $resident_id = $_SESSION['resident_id'];
+
+    $stmt = $conn->prepare("INSERT INTO notes (title, content, resident_id, is_flagged) VALUES (?, ?, ?, 0)");
+    $stmt->bind_param("ssi", $title, $content, $resident_id);
+    $stmt->execute();
+    $stmt->close();
+}
 ?>
-
-

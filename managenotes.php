@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Delete note
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     $conn->query("DELETE FROM notes WHERE note_id = $id");
@@ -18,7 +17,6 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Toggle flag
 if (isset($_GET['flag'])) {
     $id = intval($_GET['flag']);
     $conn->query("UPDATE notes SET is_flagged = NOT is_flagged WHERE note_id = $id");
@@ -30,14 +28,13 @@ $result = $conn->query("SELECT * FROM notes ORDER BY created_at DESC");
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Manage Notes</title>
-  <link rel="stylesheet" href="adminstyle.css">
+    <title>Manage Notes</title>
+    <link rel="stylesheet" href="adminstyle.css">
 </head>
 <body>
-  <div class="main">
+    <div class="main">
     <ul>
       <img src="banner.png" alt="banner" width="200" height="100" class="banner">
       <li><a href="logout.php">Log Out</a></li>
@@ -61,23 +58,29 @@ $result = $conn->query("SELECT * FROM notes ORDER BY created_at DESC");
 
     <div class="content-area">
       <h2>Resident Notes</h2>
-      <?php while ($row = $result->fetch_assoc()): ?>
-        <div class="note-card">
-          <div class="note-title"><?= htmlspecialchars($row['title']) ?></div>
-          <div class="note-content"><?= nl2br(htmlspecialchars($row['content'])) ?></div>
-          <div class="note-time"><?= htmlspecialchars($row['created_at']) ?></div>
-          <div class="note-buttons">
-            <a href="?flag=<?= $row['note_id'] ?>" class="btn-flag" onclick="return confirm('Toggle flag on this note?')">
-              <?= $row['is_flagged'] ? 'Unflag' : 'Flag' ?>
-            </a>
-            <a href="?delete=<?= $row['note_id'] ?>" class="btn-delete" onclick="return confirm('Delete this note?')">Delete</a>
-          </div>
-        </div>
-      <?php endwhile; ?>
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+<?php while ($row = $result->fetch_assoc()): ?>
+    <div style="border: 1px solid #ccc; margin: 15px 0; padding: 15px 20px; background-color: white; border-radius: 12px; width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <strong style="font-size: 16px;"><?= htmlspecialchars($row['title']) ?></strong><br>
+        <div style="margin: 10px 0;"><?= nl2br(htmlspecialchars($row['content'])) ?></div>
+        <small style="color: gray;"><?= $row['created_at'] ?></small><br><br>
+
+        <!-- Flag Button -->
+        <a href="?flag=<?= $row['note_id'] ?>" onclick="return confirm('Toggle flag?')" 
+           style="background-color: gold; color: black; padding: 6px 14px; text-decoration: none; border-radius: 8px; margin-right: 10px;">
+            <?= $row['is_flagged'] ? 'Unflag' : 'Flag' ?>
+        </a>
+
+        <!-- Delete Button -->
+        <a href="?delete=<?= $row['note_id'] ?>" onclick="return confirm('Delete this note?')" 
+           style="background-color: #e74c3c; color: white; padding: 6px 14px; text-decoration: none; border-radius: 8px;">
+            Delete
+        </a>
     </div>
-  </div>
+<?php endwhile; ?>
+</div>
+
+
+
 </body>
-<footer>
-    © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
-</footer>
 </html>

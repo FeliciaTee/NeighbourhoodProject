@@ -1,19 +1,14 @@
 <?php
 include 'connect.php';
 
-$sql = "SELECT title, content, created_at FROM notes ORDER BY created_at DESC";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT title, content, created_at FROM notes WHERE is_flagged = 0 ORDER BY created_at DESC";
+$result = $conn->query($sql);
 
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        echo "<div class='announcement-card'>";
-        echo "<strong>" . htmlspecialchars($row['title']) . "</strong>";
-        echo "<p>" . nl2br(htmlspecialchars($row['content'])) . "</p>";
-        echo "<small>" . date("F j, Y g:i A", strtotime($row['created_at'])) . "</small>";
-        echo "</div>";
-    }
-} else {
-    echo "<p>No notes found.</p>";
+while ($row = $result->fetch_assoc()) {
+    echo "<div class='announcement-card'>";
+    echo "<strong>" . htmlspecialchars($row['title']) . "</strong><br>";
+    echo nl2br(htmlspecialchars($row['content'])) . "<br>";
+    echo "<small>Posted on: " . $row['created_at'] . "</small>";
+    echo "</div>";
 }
 ?>
-
