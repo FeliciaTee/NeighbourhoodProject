@@ -13,7 +13,7 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Handle Update
+
 if (isset($_POST['update'])) {
     $id = intval($_POST['id']);
     $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -24,8 +24,10 @@ if (isset($_POST['update'])) {
     exit();
 }
 
-// Fetch reports
+
 $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
+$result = $conn->query("SELECT * FROM reports");
+
 ?>
 
 <!DOCTYPE html>
