@@ -3,14 +3,8 @@
 <head>
     <title>Sign Up</title>
     <link rel="stylesheet" href="style.css">
+    </head>
     <style>
-    body {
-        font-family: "lucida console";
-        background-color: #d2e38d88;
-        margin: 0;
-        padding: 0;
-    }
-
     h1 {
         color: #000000;
         text-align: center;
@@ -74,100 +68,20 @@
         margin-bottom: 20px;
     }
 
-    .main {
-        background-color: #90c064;
-    }
-
-    .main ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0 20px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        background-color: #90c064;
-    }
-
-    .main ul li {
-        margin: 0 10px;
-    }
-
-    .main ul li a {
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .main ul li a:hover {
-        background-color: #ddd;
-        border-radius: 5px;
-    }
-
-    .main ul li a.active,
-    .main ul li a.active:hover {
-        background-color: transparent;
-        cursor: default;
-        pointer-events: none;
-    }
-
-    .banner {
-        height: 80px;
-        width: 200px;
-        margin-right: auto;
-    }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #ffffff;
-    }
-
-    .contact-map-wrapper {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        padding: 20px;
-    }
-
-    .contact-info {
-        max-width: 400px;
-    }
-
-    .contact-label {
-        font-weight: bold;
-        display: block;
-    }
-
-    .map-container iframe {
-        width: 300px;
-        height: 200px;
-        border: 0;
-    }
-
     .divider {
         border-top: 1px solid #ccc;
         margin: 10px 0;
     }
-
-    .copyright {
-        margin-top: 10px;
-        font-size: 12px;
-    }
     </style>
-</head>
+
 
 <body>
-
-<!-- Header -->
 <div class="main">
+    <img src="banner.png" alt="banner" class="banner">
     <ul>
-        <img src="banner.png" alt="banner" class="banner">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="signup.html" class="active">Sign Up</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
         <li><a href="adminlogin.php">Admin</a></li>
         <li><a href="emergency.html">EMERGENCY</a></li>
     </ul>
@@ -218,36 +132,37 @@
 
 <!-- Footer (from index.html) -->
 <footer>
-    <div class="contact-map-wrapper">
-        <div class="contact-info">
-            <div>
-                <span class="contact-label">Email Address</span>
-                <span>info@bandarseriehsan.my</span>
+        <div class="contact-map-wrapper">
+            <div class="contact-info">
+                <div>
+                    <span class="contact-label">Email Address</span>
+                    <span>info@bandarseriehsan.my</span>
+                </div>
+                <div>
+                    <span class="contact-label">Phone Number</span>
+                    <span>+603 8706 9876</span>
+                </div>
+                <div>
+                    <span class="contact-label">Office Address</span>
+                    <span>No. 21 4/47, Jalan BSE, Bandar Seri Ehsan 42700 Banting, Kuala Langat, Selangor</span>
+                </div>
             </div>
-            <div>
-                <span class="contact-label">Phone Number</span>
-                <span>+603 8706 9876</span>
-            </div>
-            <div>
-                <span class="contact-label">Office Address</span>
-                <span>No. 21 4/47, Jalan BSE, Bandar Seri Ehsan 42700 Banting, Kuala Langat, Selangor</span>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4286.120030556036!2d101.62837427529254!3d2.7696796972074273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdbe8e271dca95%3A0xf5327d71e6fb24cd!2s21%2C%20Jalan%20Bse%204%2F47%2C%20Bandar%20Seri%20Ehsan%2C%2042700%20Banting%2C%20Selangor!5e1!3m2!1sen!2smy!4v1749486906990!5m2!1sen!2smy" 
+                    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
 
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4286.120030556036!2d101.62837427529254!3d2.7696796972074273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdbe8e271dca95%3A0xf5327d71e6fb24cd!2s21%2C%20Jalan%20Bse%204%2F47%2C%20Bandar%20Seri%20Ehsan%2C%2042700%20Banting%2C%20Selangor!5e1!3m2!1sen!2smy!4v1749486906990!5m2!1sen!2smy" 
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="divider"></div>
+
+        <div class="copyright">
+            <div>English</div>
+            <div>© 2025 The Neighborhood Bandar Seri Ehsan.</div>
+            <div>theneighborhood.bhs</div>
         </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="copyright">
-        <div>English</div>
-        <div>© 2025 The Neighborhood Bandar Seri Ehsan.</div>
-        <div>theneighborhood.bhs</div>
-    </div>
-</footer>
+    </footer>
 
 </body>
 </html>
