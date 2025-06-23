@@ -1,4 +1,8 @@
-header{  
+* {
+  box-sizing: border-box;
+}
+
+header{
     background-size: cover;
     background-position: center;
     min-height: 100px;
@@ -11,6 +15,8 @@ body {
   padding: 0;
   background-color: #d2e38d88;
   color: #333;
+  padding: 0;
+  margin: 0;
 }
 
 .main{
@@ -30,52 +36,6 @@ body {
   width: 200px;  
 }
 
-ul{
-    display: flex;
-    gap: 20px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color:#90c064;
-    font-family: lucida console;
-}
-
-h1{
-  align-items: center;
-  list-style-type: none;
-  display: flex;
-  background-color: #bcdd6f;
-  color: #000000;
-  justify-content: flex-start;
-  margin: 0;
-  padding: 10px 10px;
-}
-
-li {
-    float: left;
-    padding: 10px 14px;
-}
-  
-li a {
-    display: block;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-  
-li a:hover {
-    background-color: #74dc6b;
-}
-
-a:hover{
-    background-color: #74dc6b;
-}
-  
-.active {
-    background-color: #7ed264;
-}
-
 .user-info {
     background-color: #b7e685;
     padding: 10px 20px;
@@ -93,6 +53,40 @@ a:hover{
     display: flex;
     flex-direction: column;
 }
+
+ul {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #90c064;
+    font-family: lucida console;
+  }
+
+
+  
+  li {
+    float: left;
+    display: flex;
+    align-items: center;
+  }
+  
+  li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #74dc6b;
+  }
+  
+  .active {
+    background-color: #7ed264;
+  }
 
   .sidebar ul {
   list-style-type: none;
@@ -167,7 +161,8 @@ a:hover{
   .contact-box{
     width: 100%;
   }
-  box-shadow: 0 0 5px #ccc;
+  
+  box-shadow: 0 0 5px white;
 }
 
 .profile-header {
@@ -262,8 +257,7 @@ button {
 }
 
 .contact-box p {
-  margin: 20px 0;
-  padding: 10px 15px;
+  margin: 10px 0;
   font-size: 14px;
 }
 
@@ -322,16 +316,8 @@ button {
   background-color: #fff0b3;
 }
 
-.edit-btn:hover{
-    background-color: #e5cc69;
-}
-
 .delete-btn {
   background-color: #ffc0c0;
-}
-
-.delete-btn:hover{
-    background-color: #f48585;
 }
 
 .action-buttons button {
@@ -346,7 +332,7 @@ button {
 }
 
 .action-buttons button:hover {
-  background-color: #5dc55d;
+  background-color: #b1e6b1;
 }
 
 .icon-btn{
@@ -354,11 +340,6 @@ button {
   height: 20px;
   margin-right: 8px;
   vertical-align: middle;
-}
-
-.icon{
-    width: 30px;
-    height: 30px;
 }
 
  .container {
@@ -411,105 +392,3 @@ button {
             color: #666;
         }
 
-        .header {
-            background-color: #addf83;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-.note-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin-bottom: 20px;
-  padding: 20px;
-  transition: transform 0.2s;
-}
-
-.note-card:hover {
-  transform: translateY(-2px);
-}
-
-/* Left section of note */
-.note-left {
-  flex: 1;
-}
-
-/* Note title */
-.note-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #34495e;
-  margin-bottom: 10px;
-}
-
-/* Note content */
-.note-content {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 10px;
-  white-space: pre-wrap;
-}
-
-/* Note time */
-.note-time {
-  font-size: 13px;
-  color: #999;
-  margin-bottom: 12px;
-}
-
-/* Button container */
-.note-buttons a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 14px;
-  margin-right: 8px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-/* View button */
-.btn-view {
-  background-color: #3498db;
-  color: white;
-}
-
-.btn-view:hover {
-  background-color: #2980b9;
-}
-
-/* Flag button */
-.btn-flag {
-  background-color: #f1c40f;
-  color: #333;
-}
-
-.btn-flag:hover {
-  background-color: #d4ac0d;
-}
-
-/* Delete button */
-.btn-delete {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.btn-delete:hover {
-  background-color: #c0392b;
-}
-
-/* Right section with image */
-.note-right img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-left: 20px;
-}
