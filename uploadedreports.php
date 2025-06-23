@@ -37,7 +37,7 @@ $sql = "SELECT * FROM reports";
 if (!empty($search)) {
     $sql .= " WHERE title LIKE '%$search%' OR category LIKE '%$search%'";
 }
-$sql .= " ORDER BY created_at DESC";
+$sql .= " ORDER BY date_created DESC";
 $result = $conn->query($sql);
 ?>
 
