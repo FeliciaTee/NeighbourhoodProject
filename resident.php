@@ -41,6 +41,16 @@ if (!isset($_SESSION['username'])) {
 
     
        
+.sidebar {
+    width: 180px;
+    background-color: #d5ecb3;
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    overflow-y: auto;
+}
 
         .sidebar ul {
             list-style-type: none;
@@ -86,7 +96,7 @@ if (!isset($_SESSION['username'])) {
             text-align: center;
             background-color: #a4d373;
             padding: 20px;
-            margin-left: 230px;
+            margin-left: 180px;
         }
     </style>
 </head>
