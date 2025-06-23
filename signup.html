@@ -1,152 +1,224 @@
 <!DOCTYPE html>
-<html>
-   <title>Sign Up</title>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="style.css">
 
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-   box-sizing: border-box;
-  background-color: #b5dd97;
+    <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #b5dd97;
+        margin: 0;
+        padding: 0;
+    }
 
-}
+    h1 {
+        font-family: "Lucida Console";
+        color: #000000;
+        text-align: center;
+    }
 
-
- h1 {
-            font-family: "lucida console";
-            color: #000000;
-            text-align: center;
- }
-p {
-  
-  font-family: "lucida console";
-  font-size: 20px;
-  text-align: center;
-  
-}
+    p {
+        font-family: "Lucida Console";
+        font-size: 20px;
+        text-align: center;
+    }
 
     input[type=text], input[type=password] {
-            width: 90%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: inline-block;
-            border: none;
-            background: #f1f1f1;
-        }
+        width: 90%;
+        padding: 15px;
+        margin-top: 5px;
+        display: block;
+        border: none;
+        background: #f1f1f1;
+        border-radius: 5px;
+    }
 
-        input[type=text]:focus, input[type=password]:focus {
-            background-color: #ddd;
-            outline: none;
-        }
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
 
-        hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-        button {
-            background-color: #04AA6D;
-            color: white;
-            padding: 10px 16px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 50%;
-            opacity: 0.9;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    button {
+        background-color: #04AA6D;
+        color: white;
+        padding: 10px 16px;
+        margin: 20px auto 0 auto;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        display: block;
+        border-radius: 5px;
+    }
 
-        button:hover {
-            opacity: 1;
-        }
+    button:hover {
+        opacity: 0.8;
+    }
 
-        .signup-box {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            width: 550px;
-            margin: 30px auto;
-        }
+    .signup-box {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        width: 550px;
+        margin: 30px auto;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-              
-</style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .main ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #a5d66f;
+        display: flex;
+        align-items: center;
+    }
+
+    .main ul li {
+        float: left;
+        margin: 0 15px;
+    }
+
+    .main ul li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .main ul li a:hover {
+        background-color: #ddd;
+        border-radius: 5px;
+    }
+
+    .banner {
+        height: 100px;
+        margin-right: 20px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+        font-size: 14px;
+        background-color: #d5ecb3;
+    }
+
+    .contact-map-wrapper {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    .contact-info {
+        max-width: 400px;
+    }
+
+    .contact-label {
+        font-weight: bold;
+        display: block;
+    }
+
+    .map-container iframe {
+        width: 300px;
+        height: 200px;
+        border: 0;
+    }
+
+    .copyright {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+    </style>
+</head>
 
 <body>
-  
-        <div class="main">
-            <ul>
-                <img src="banner.png" alt="banner" class="banner">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="signup.html">Sign Up </a></li>
-                <li><a href="admin.php">Admin</a></li>
-                <li><a href="emergency.html">EMERGENCY</a></li>
-            </ul>
-        </div>
+
+<div class="main">
+    <ul>
+        <img src="banner.png" alt="banner" class="banner">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="admin.php">Admin</a></li>
+        <li><a href="emergency.html">EMERGENCY</a></li>
+    </ul>
+</div>
 
 <form action="signup.php" method="post" style="border:1px solid #ccc">
+    <div class="container">
+        <div class="signup-box">
+            <h1>Sign Up</h1>
 
-  <div class="container">
-    <div class="signup-box">
-      <h1>Sign Up</h1>
-   
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="name" required>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" placeholder="Enter Name" name="name" required>
+            </div>
 
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+            </div>
 
-      <label for="address"><b>Address</b></label>
-      <input type="text" placeholder="Enter Address" name="address" required>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" placeholder="Enter Address" name="address" required>
+            </div>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+            <div class="form-group">
+                <label for="psw">Password</label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
 
-      <div class="center">
-        <button type="submit" class="signupbtn">Sign Up</button>
-      </div>  
-      
-      <p>Already have an account? <a href="index.html" style="color:dodgerblue">Log In</a></p>
+            <button type="submit" class="signupbtn">Sign Up</button>
+
+            <p>Already have an account? <a href="index.html" style="color:dodgerblue">Log In</a></p>
+        </div>
     </div>
-  </div>
 </form>
 
-
-
- <footer>
-        <div class="contact-map-wrapper">
-            <div class="contact-info">
-                <div>
-                    <span class="contact-label">Email Address</span>
-                    <span>info@bandarseriehsan.my</span>
-                </div>
-                <div>
-                    <span class="contact-label">Phone Number</span>
-                    <span>+603 8706 9876</span>
-                </div>
-                <div>
-                    <span class="contact-label">Office Address</span>
-                    <span>No. 21 4/47, Jalan BSE, Bandar Seri Ehsan 42700 Banting, Kuala Langat, Selangor</span>
-                </div>
+<footer>
+    <div class="contact-map-wrapper">
+        <div class="contact-info">
+            <div>
+                <span class="contact-label">Email Address</span>
+                <span>info@bandarseriehsan.my</span>
             </div>
-
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4286.120030556036!2d101.62837427529254!3d2.7696796972074273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdbe8e271dca95%3A0xf5327d71e6fb24cd!2s21%2C%20Jalan%20Bse%204%2F47%2C%20Bandar%20Seri%20Ehsan%2C%2042700%20Banting%2C%20Selangor!5e1!3m2!1sen!2smy!4v1749486906990!5m2!1sen!2smy" 
-                    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <div>
+                <span class="contact-label">Phone Number</span>
+                <span>+603 8706 9876</span>
+            </div>
+            <div>
+                <span class="contact-label">Office Address</span>
+                <span>No. 21 4/47, Jalan BSE, Bandar Seri Ehsan 42700 Banting, Kuala Langat, Selangor</span>
             </div>
         </div>
 
-        <div class="divider"></div>
-
-        <div class="copyright">
-            <div>English</div>
-            <div>© 2025 The Neighborhood Bandar Seri Ehsan.</div>
-            <div>theneighborhood.bhs</div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4286.120030556036!2d101.62837427529254!3d2.7696796972074273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdbe8e271dca95%3A0xf5327d71e6fb24cd!2s21%2C%20Jalan%20Bse%204%2F47%2C%20Bandar%20Seri%20Ehsan%2C%2042700%20Banting%2C%20Selangor!5e1!3m2!1sen!2smy!4v1749486906990!5m2!1sen!2smy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    </footer>
+    </div>
+
+    <div class="copyright">
+        <div>English</div>
+        <div>© 2025 The Neighborhood Bandar Seri Ehsan.</div>
+        <div>theneighborhood.bhs</div>
+    </div>
+</footer>
 
 </body>
 </html>
