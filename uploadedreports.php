@@ -101,6 +101,7 @@ $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
 
         <button type="submit" name="update">Update</button>
         <a href="?delete=<?= htmlspecialchars($row['id']) ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
+
     </form>
 <?php endwhile; ?>
 
