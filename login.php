@@ -30,6 +30,8 @@ if ($result->num_rows === 1) {
     $_SESSION['username'] = $row['username'];
     $_SESSION['name'] = $row['name'];
     $_SESSION['email'] = $row['email'];
+    $_SESSION['address'] = $row['address'];
+
 
 
     // Create formatted ID like R001
