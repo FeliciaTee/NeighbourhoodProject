@@ -18,22 +18,14 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Flag/Unflag note
+// Toggle flag
 if (isset($_GET['flag'])) {
     $id = intval($_GET['flag']);
-    $conn->query("UPDATE notes SET is_flagged = 1 WHERE note_id = $id");
+    $conn->query("UPDATE notes SET is_flagged = NOT is_flagged WHERE note_id = $id");
     header("Location: managenotes.php");
     exit();
 }
 
-if (isset($_GET['unflag'])) {
-    $id = intval($_GET['unflag']);
-    $conn->query("UPDATE notes SET is_flagged = 0 WHERE note_id = $id");
-    header("Location: managenotes.php");
-    exit();
-}
-
-// Get all notes
 $result = $conn->query("SELECT * FROM notes ORDER BY created_at DESC");
 ?>
 
@@ -63,43 +55,24 @@ $result = $conn->query("SELECT * FROM notes ORDER BY created_at DESC");
   <div class="dashboard">
     <div class="sidebar">
       <ul>
-        <li><a href="uploadedreports.php">
-          <img src="document.png" alt="uploadedreports" class="uploadedreports">
-          Uploaded Reports
-        </a></li>
-        <li><a href="managenotes.php">
-          <img src="bell.png" alt="managenotes" class="managenotes">
-          Manage Notes
-        </a></li>
-        <li><a href="noticeboard.php">
-          <img src="notice.png" alt="noticeboard" class="noticeboard">
-          Notice Board
-        </a></li>
+        <li><a href="uploadedreports.php"><img src="document.png" class="uploadedreports"> Uploaded Reports</a></li>
+        <li><a href="managenotes.php"><img src="bell.png" class="managenotes"> Manage Notes</a></li>
+        <li><a href="noticeboard.php"><img src="notice.png" class="noticeboard"> Notice Board</a></li>
       </ul>
     </div>
 
-    <div class="content">
-      <h2>Manage Notes</h2>
-      <a href="addnote.php" class="btn-add">+ Add Note</a>
-
+    <div class="content-area">
+      <h2>Resident Notes</h2>
       <?php while ($row = $result->fetch_assoc()): ?>
-        <div class="note-card <?= $row['is_flagged'] ? 'flagged' : '' ?>">
-          <div class="note-title">
-            <?= htmlspecialchars($row['title']) ?>
-            <?php if ($row['is_flagged']): ?>
-              <span class="flag-indicator">🔴 Flagged</span>
-            <?php endif; ?>
-          </div>
+        <div class="note-card">
+          <div class="note-title"><?= htmlspecialchars($row['title']) ?></div>
           <div class="note-content"><?= nl2br(htmlspecialchars($row['content'])) ?></div>
-          <div class="note-time"><?= time_elapsed_string($row['date_created']) ?></div>
+          <div class="note-time"><?= htmlspecialchars($row['created_at']) ?></div>
           <div class="note-buttons">
-            <a href="editnote.php?id=<?= $row['note_id'] ?>" class="btn-edit">Edit</a>
+            <a href="?flag=<?= $row['note_id'] ?>" class="btn-flag" onclick="return confirm('Toggle flag on this note?')">
+              <?= $row['is_flagged'] ? 'Unflag' : 'Flag' ?>
+            </a>
             <a href="?delete=<?= $row['note_id'] ?>" class="btn-delete" onclick="return confirm('Delete this note?')">Delete</a>
-            <?php if ($row['is_flagged']): ?>
-              <a href="?unflag=<?= $row['note_id'] ?>" class="btn-flag">Unflag</a>
-            <?php else: ?>
-              <a href="?flag=<?= $row['note_id'] ?>" class="btn-flag">Flag</a>
-            <?php endif; ?>
           </div>
         </div>
       <?php endwhile; ?>
@@ -107,41 +80,3 @@ $result = $conn->query("SELECT * FROM notes ORDER BY created_at DESC");
   </div>
 </body>
 </html>
-
-<?php
-function time_elapsed_string($datetime, $full = false) {
-    $now = new DateTime;
-    $ago = new DateTime($datetime);
-    $diff = $now->diff($ago);
-
-    $weeks = floor($diff->d / 7);
-    $diff->d -= $weeks * 7;
-
-    $string = [
-        'y' => 'year',
-        'm' => 'month',
-        'w' => $weeks,
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'min',
-        's' => 'sec',
-    ];
-
-    foreach ($string as $k => &$v) {
-        if ($k === 'w') {
-            if ($v > 0) {
-                $v = $v . ' week' . ($v > 1 ? 's' : '');
-            } else {
-                unset($string[$k]);
-            }
-        } elseif ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
-        }
-    }
-
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
-}
-?>
