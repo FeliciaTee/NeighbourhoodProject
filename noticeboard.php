@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_notice'])) {
         <div class="main">
             <ul>
                 <img src="banner.png" alt="banner" width="200" height="100" class="banner">
-                <li><a href="logout.html">Log Out</a></li>
+                <li><a href="logout.php">Log Out</a></li>
             </ul>
         </div>
 
