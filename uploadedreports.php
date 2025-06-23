@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Delete report
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     $conn->query("DELETE FROM reports WHERE report_id = $id");
@@ -18,7 +17,6 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Update report
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_report'])) {
     $id = intval($_POST['report_id']);
     $title = $conn->real_escape_string($_POST['title']);
@@ -31,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_report'])) {
     exit();
 }
 
+<<<<<<< HEAD
 // Search reports
 $search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
 $sql = "SELECT * FROM reports";
@@ -39,6 +38,9 @@ if (!empty($search)) {
 }
 $sql .= " ORDER BY created_at DESC";
 $result = $conn->query($sql);
+=======
+$result = $conn->query("SELECT * FROM reports ORDER BY date_created DESC");
+>>>>>>> 9ce5a682f02ad58e9e2fd9a9d338748851f7fa47
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +54,6 @@ $result = $conn->query($sql);
   <div class="main">
     <ul>
       <img src="banner.png" alt="banner" width="200" height="100" class="banner">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
       <li><a href="logout.php">Log Out</a></li>
     </ul>
   </div>
