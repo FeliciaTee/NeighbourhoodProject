@@ -26,11 +26,11 @@
     <div class="dashboard">
         <div class="sidebar">
         <ul>
-            <li><a href="uploadedreports.html">
+            <li><a href="uploadedreports.php">
             <img src="document.png" alt="uploadedreports" class="uploadedreports">
             Uploaded Reports
             </a></li>
-            <li><a href="managenotes.html">
+            <li><a href="managenotes.php">
             <img src="bell.png" alt="managenotes" class="managenotes">
             Manage Notes
             </a></li>

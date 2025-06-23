@@ -9,15 +9,15 @@
 
     <div class="sidebar">
         <ul>
-            <li><a href="adminreport.php" id="adminReport">
+            <li><a href="uploadedreports.php" id="adminUploadedReports">
                 <img src="document.png" alt="Uploaded Reports" class="icon">
                 Uploaded Reports
             </a></li>
-            <li><a href="admincomnotes.php" id="adminComnotes">
+            <li><a href="managenotes.php" id="adminManageNotes">
                 <img src="bell.png" alt="Manage Notes" class="icon">
                 Manage Notes
             </a></li>
-            <li><a href="adminnotices.php" id="adminNotices">
+            <li><a href="noticeboard.html" id="adminNotices">
                 <img src="notice.png" alt="Notice Board" class="icon">
                 Notice Board
             </a></li>
