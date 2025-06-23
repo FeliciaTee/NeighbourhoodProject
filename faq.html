@@ -1,152 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <link rel = stylesheet type = "text/css"href="residentstyle.css">
+     <link rel ="stylesheet" href="residentstyle.css">
     <title>FAQ</title>
-    <style>
-       
-
-       
-
-        .banner {
-            display: flex;
-            align-items: center;
-        }
-
-        .banner img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        nav a {
-            margin: 0 10px;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .sidebar {
-            width: 200px;
-            background-color: #d5ecb3;
-            position: fixed;
-            top: 70px;
-            bottom: 0;
-            padding: 20px;
-            font-family: "Lucida Console", monospace;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin: 15px 0;
-        }
-
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .main {
-            margin-left: 230px;
-            padding: 20px;
-            font-family: "Lucida Console";
-        }
-
-        .faq-box {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 2px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: #444;
-        }
-
-        details {
-            background-color: #f4f4f4;
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        details p {
-            margin-top: 10px;
-        }
-
-        footer {
-            text-align: center;
-            background-color: #a4d373;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            left: 240px;
-            right: 0;
-            font-family: "Lucida Console";
-        }
-    </style>
 </head>
+
+<style>  
+.faq-box {
+    margin-left: 250px;
+    margin-top: -660px;
+    padding: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 2px rgba(0,0,0,0.1);
+}
+
+details {
+    background-color: #f4f4f4;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+details p {
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    background-color: #a4d373;
+    padding: 10px;
+}
+</style>
+
 <body>
 
-<header>
-    <div class="banner">
-        <img src="banner.png" alt="banner">
-        <span>The Neighborhood: One-Stop Community Center</span>
-    </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="#">Log Out</a>
-    </nav>
-</header>
-
-<div class="sidebar">
-   
+<div class="main">
+    <img src="banner.png" alt="banner" class="banner">
     <ul>
-         <li><a href="resident.php">Resident Profile</a></li>
-        <li><a href="report.html">Lodge Report</a></li>
-        <li><a href="notescommunity.html">Community Notes</a></li>
-        <li><a href="faq.html">Help & Support</a></li>
-        <li><a href="notification.html"><strong>Notifications</strong></a></li>
+        <li><a href="logout.php">Log Out</a></li>
     </ul>
 </div>
 
-<div class="main">
+<div class="sidebar">
+    <ul>
+        <li><a href="resident.php">Resident Profile</a></li>
+        <li><a href="report.html">Lodge Report</a></li>
+        <li><a href="notescommunity.html">Community Notes</a></li>
+        <li><a href="faq.html">Help & Support</a></li>
+        <li><a href="notification.html">Notifications</a></li>
+    </ul>
+</div>
+
     <div class="faq-box">
         <h2>Help & Support</h2>
         <p>Frequently asked questions and support resources.</p>
 
         <details>
             <summary>How do I lodge a report?</summary>
-            <p> Simply click the "Report" button in the main menu, fill in the required details (location, issue type, description), and submit. You’ll receive a confirmation once it's successfully sent.
+            <p> Go to the "Lodge a Report" section from the main menu. Fill in the details of the issue, attach photos if needed, and click Submit.</p>
+        </details>
 
         <details>
             <summary>Where can I find information about upcoming events?</summary>
-            <p>Event details are posted on the Community Notes page.</p>
+            <p>All upcoming community events can be found in the "Community Events" section.</p>
         </details>
 
         <details>
             <summary>What kind of issues can I report?</summary>
-            <p>You can report anything related to community safety, cleanliness, faulty street lights, broken public facilities, noise complaints, or any disturbances within your area.</p>
+            <p>Residents can report community-related concerns such as broken streetlights, water leakage, cleanliness issues, security concerns, noise complaints and others.</p>
         </details>
 
         <details>
             <summary>Is my report anonymous?</summary>
-            <p> Yes. You can choose to submit your report anonymously. However, providing your contact info may help the admin follow up more effectively.</p>
+            <p> Yes, you can choose to submit your report anonymously. However, providing your details can help the management follow up more effectively.</p>
         </details>
 
         <details>
             <summary>How long does it take for a report to be addressed?</summary>
-            <p>Reports are typically reviewed within 1-2 working days.</p>
+            <p>Reports are typically reviewed within 2-3 working days. Urgent issues may receive faster attention.</p>
         </details>
     </div>
-</div>
-
-<footer>
+ <footer>
     © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
 </footer>
 
