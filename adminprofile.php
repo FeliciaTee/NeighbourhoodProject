@@ -1,7 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header("Location: adminlogin.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Admin Profile</title>
      <link rel="stylesheet" href="adminstyle.css">
 </head>
 
@@ -10,8 +20,6 @@
         <div class="main">
             <ul>
                 <img src="banner.png" alt="banner" class="banner">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
         </div>

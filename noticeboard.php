@@ -49,8 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_notice'])) {
         <div class="main">
             <ul>
                 <img src="banner.png" alt="banner" width="200" height="100" class="banner">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
                 <li><a href="logout.html">Log Out</a></li>
             </ul>
         </div>
@@ -103,8 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_notice'])) {
 
         <div class="notice-card" style="border: 2px dashed gray; margin-top: 20px;">
             <form method="POST" action="noticeboard.php">
-                <h3>Add New Notice</h3>
+                <h3>Add New Notice
                 <input type="text" name="title" placeholder="Notice Title" required>
+                </h3>
                 <textarea name="content" placeholder="Notice Content" required></textarea>
                 <div class="card-buttons">
                     <button type="submit" name="add_notice">Add Notice</button>
