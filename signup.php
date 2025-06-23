@@ -1,30 +1,41 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// Connect to database
+$servername = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "neighborhoodproject";
 
-include 'connect.php';
+// Create connection
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $address = trim($_POST['address']);
-    $password = $_POST['psw']; 
+// Get data from form
+$username = $_POST['username'];
+$fullname = $_POST['fullname'];
+$email = $_POST['email'];
+$address = $_POST['address'];
+$password = $_POST['psw'];
 
-    $sql = "INSERT INTO signup (name, email, address, password)
-            VALUES ('$name', '$email', '$address', '$password')";
+// Encrypt password
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Signup successful!";
-    } else {
-        echo "Error: " . $conn->error;
-    }
+// Insert into database (assuming table name = 'residents')
+$sql = "INSERT INTO residents (username, fullname, email, address, password)
+        VALUES (?, ?, ?, ?, ?)";
 
-    $conn->close();
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssss", $username, $fullname, $email, $address, $hashedPassword);
+
+if ($stmt->execute()) {
+    echo "<script>alert('Sign up successful! You may now log in.'); window.location.href = 'index.html';</script>";
+} else {
+    echo "Error: " . $stmt->error;
 }
+
+$stmt->close();
+$conn->close();
 ?>
-
