@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$conn = new mysqli("localhost", "root", "", "workshop project");
+$conn = new mysqli("localhost", "root", "", "neighborhoodproject");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
