@@ -78,7 +78,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="signup.html">Sign Up</a></li>
-            <li><a href="adminlogin.html">Admin</a></li>
+            <li><a href="adminlogin.php">Admin</a></li>
             <li><a href="emergency.html">EMERGENCY</a></li>
         </ul>
     </div>
