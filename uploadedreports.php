@@ -23,7 +23,6 @@ $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>Admin: Uploaded Reports</title>
   <style>
     body { font-family: Arial; background: #f9f9f9; padding: 20px; }
