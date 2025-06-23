@@ -119,12 +119,12 @@ if (!isset($_SESSION['username'])) {
         <li><a href="report.html">Lodge Report</a></li>
         <li><a href="notescommunity.html">Community Notes</a></li>
         <li><a href="faq.html">Help & Support</a></li>
-        <li><a href="notification.html"><strong>Notifications</strong></a></li>
+        <li><a href="notification.php"><strong>Notifications</strong></a></li>
     </ul>
 </div>
 
 <div class="main">
-     <?php
+      <?php
     if (isset($_SESSION['update_success'])) {
         echo '<div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #c3e6cb;">
             Profile updated successfully!
@@ -132,6 +132,16 @@ if (!isset($_SESSION['username'])) {
         unset($_SESSION['update_success']);
     }
     ?>
+
+    <!-- Last login aligned right -->
+    <div style="text-align: right; font-size: 14px; color: #555; margin-bottom: 10px;">
+        <?php
+        date_default_timezone_set('Asia/Kuala_Lumpur');
+        $lastLogin = $_SESSION['last_login'];
+        echo "Last login: " . date('d M Y, h:i A', strtotime($lastLogin));
+        ?>
+    </div>
+
     <div class="card" style="text-align: center;">
         <img src="uploads/<?php echo $_SESSION['profile_pic'] ?? 'default.jpeg'; ?>" 
              alt="Profile Picture" 
@@ -159,7 +169,7 @@ if (!isset($_SESSION['username'])) {
     &copy; 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
 </footer>
 
-<!-- modal -->
+<!-- Modal -->
 <div id="editModal" class="modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
   <div style="background-color: #fff; margin: 10% auto; padding: 30px; border-radius: 10px; width: 50%; position: relative;">
     <span onclick="document.getElementById('editModal').style.display='none'" 
