@@ -560,7 +560,7 @@ echo '</div>'; // end button container
                         echo '<p style="color:#999;">No comments yet.</p>';
                     }
                 ?>
-                <form class="comment-form" action="submit_comment.php" method="POST">
+                <form class="comment-form" action="submitcomment.php" method="POST">
                     <input type="hidden" name="notification_id" value="cleanup">
                     <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                     <textarea name="comment_text" placeholder="Write your comment..." required></textarea>
