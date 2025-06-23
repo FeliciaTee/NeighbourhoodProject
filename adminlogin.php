@@ -31,20 +31,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="adminstyle.css">
     <title>Admin Login</title>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f0f0f0;
-            padding: 40px;
-        }
+
         .login-box {
             background-color: white;
             width: 400px;
-            padding: 30px;
-            margin: auto;
+            padding: 70px;
+            margin: 100px auto;
             box-shadow: 0 0 10px #ccc;
             border-radius: 8px;
         }
@@ -59,11 +57,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .login-box button {
             width: 100%;
-            padding: 10px;
+            margin-top: 20px;
+            padding: 15px;
             background: #04AA6D;
             color: white;
             border: none;
             cursor: pointer;
+        }
+        .login-box button:hover{
+            background-color:rgb(6, 133, 86);
         }
         .error {
             color: red;
@@ -73,6 +75,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
+<div class="main">
+            <ul>
+                <img src="banner.png" alt="banner" class="banner">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="logout.html">Log Out</a></li>
+            </ul>
+        </div>
+
+</div>
 
 <div class="login-box">
     <h2>Admin Login</h2>
