@@ -14,12 +14,6 @@ if (!isset($_SESSION['resident_id'])) {
     <style> 
 
 
-
-
-
-
-
-
     </style>
 
 
