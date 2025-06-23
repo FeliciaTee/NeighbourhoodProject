@@ -1,43 +1,107 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-include 'connect.php';
+session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = trim($_POST['title']);
-    $username = trim($_POST['username']); // must match column name: 'Username'
-    $category = trim($_POST['category']);
-    $location = trim($_POST['location']);
-    $description = trim($_POST['description']);
-    $imagePath = '';
+$conn = new mysqli("localhost", "root", "", "neighborhoodproject");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    if (!empty($_FILES['image']['name'])) {
-        $imageName = basename($_FILES['image']['name']);
-        $targetDir = "uploads/";
-        $targetFile = $targetDir . $imageName;
+$error = '';
 
-        if (!is_dir($targetDir)) {
-            mkdir($targetDir, 0777, true);
-        }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $_POST['password'];
 
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-            $imagePath = $targetFile;
-        } else {
-            echo "Image upload failed.";
+    $result = $conn->query("SELECT * FROM admin WHERE username = '$username'");
+
+    if ($result->num_rows === 1) {
+        $admin = $result->fetch_assoc();
+        if (password_verify($password, $admin['password'])) {
+            $_SESSION['is_admin'] = true;
+            $_SESSION['admin_id'] = $admin['admin_id'];
+            header("Location: adminprofile.php");
             exit();
+        } else {
+            $error = "Incorrect password.";
         }
-    }
-
-    $stmt = $conn->prepare("INSERT INTO reports (title, Username, category, location, description, image) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $title, $username, $category, $location, $description, $imagePath);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Report submitted successfully!'); window.location.href='report.html';</script>";
     } else {
-        echo "Error: " . $stmt->error;
+        $error = "Admin not found.";
     }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="adminstyle.css">
+    <title>Admin Login</title>
+    <style>
+
+        .login-box {
+            background-color: white;
+            width: 400px;
+            padding: 70px;
+            margin: 100px auto;
+            box-shadow: 0 0 10px #ccc;
+            border-radius: 8px;
+        }
+        .login-box h2 {
+            text-align: center;
+        }
+        .login-box input[type=text],
+        .login-box input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .login-box button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            background: #04AA6D;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .login-box button:hover{
+            background-color:rgb(6, 133, 86);
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+            <ul>
+                <img src="banner.png" alt="banner" class="banner">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+
+</div>
+
+<div class="login-box">
+    <h2>Admin Login</h2>
+
+    <?php if ($error): ?>
+        <div class="error"><?= $error ?></div>
+    <?php endif; ?>
+
+    <form method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Log In</button>
+    </form>
+</div>
+
+</body>
+</html>
