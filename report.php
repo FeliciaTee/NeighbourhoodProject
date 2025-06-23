@@ -1,23 +1,16 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
 include 'connect.php';
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $title = trim($_POST['title']);
-    $user_id = trim($_POST['id']);
+    $username = trim($_POST['username']); // must match column name: 'Username'
     $category = trim($_POST['category']);
     $location = trim($_POST['location']);
     $description = trim($_POST['description']);
-
-
     $imagePath = '';
+
     if (!empty($_FILES['image']['name'])) {
         $imageName = basename($_FILES['image']['name']);
         $targetDir = "uploads/";
@@ -35,15 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $sql = "INSERT INTO reports (title, user_id, category, location, description, image)
-            VALUES ('$title', '$user_id', '$category', '$location', '$description', '$imagePath')";
+    $stmt = $conn->prepare("INSERT INTO reports (title, Username, category, location, description, image) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $title, $username, $category, $location, $description, $imagePath);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Report submitted successfully!";
+    if ($stmt->execute()) {
+        echo "<script>alert('Report submitted successfully!'); window.location.href='report.html';</script>";
     } else {
-        echo "Error: " . $conn->error;
+        echo "Error: " . $stmt->error;
     }
 
+    $stmt->close();
     $conn->close();
 }
 ?>
