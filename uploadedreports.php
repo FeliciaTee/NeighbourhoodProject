@@ -5,7 +5,7 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
-// Handle Delete Request
+// Handle Delete
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     $conn->query("DELETE FROM reports WHERE id = $id");
@@ -13,7 +13,7 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Handle Update Request
+// Handle Update
 if (isset($_POST['update'])) {
     $id = intval($_POST['id']);
     $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -24,7 +24,7 @@ if (isset($_POST['update'])) {
     exit();
 }
 
-// Fetch Reports
+// Fetch reports
 $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
 ?>
 
@@ -77,7 +77,7 @@ $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
 
 <?php while ($row = $result->fetch_assoc()): ?>
     <form method="post">
-        <input type="hidden" name="id" value="<?= $row['id'] ?>">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($row['id']) ?>">
 
         <p><strong>Title:</strong></p>
         <input type="text" name="title" value="<?= htmlspecialchars($row['title']) ?>">
@@ -97,10 +97,10 @@ $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
             <?php endif; ?>
         </p>
 
-        <p><strong>Submitted At:</strong> <?= $row['created_at'] ?></p>
+        <p><strong>Submitted At:</strong> <?= htmlspecialchars($row['created_at']) ?></p>
 
         <button type="submit" name="update">Update</button>
-        <a href="?delete=<?= $row['id'] ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
+        <a href="?delete=<?= htmlspecialchars($row['id']) ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
     </form>
 <?php endwhile; ?>
 
