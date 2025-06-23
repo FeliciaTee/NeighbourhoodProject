@@ -5,7 +5,7 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     exit();
 }
 
-$conn = new mysqli("localhost", "root", "", "workshop project");
+$conn = new mysqli("localhost", "root", "", "neighborhoodproject");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -31,8 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_report'])) {
     exit();
 }
 
-// Get all reports
-$result = $conn->query("SELECT * FROM reports ORDER BY date_created DESC");
+// Search reports
+$search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
+$sql = "SELECT * FROM reports";
+if (!empty($search)) {
+    $sql .= " WHERE title LIKE '%$search%' OR category LIKE '%$search%'";
+}
+$sql .= " ORDER BY created_at DESC";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +76,11 @@ $result = $conn->query("SELECT * FROM reports ORDER BY date_created DESC");
     <div class="content">
       <h2>Resident Reports</h2>
 
+      <form method="GET" style="margin-bottom: 20px;">
+        <input type="text" name="search" placeholder="Search by title or category..." value="<?= htmlspecialchars($search) ?>">
+        <button type="submit">Search</button>
+      </form>
+
       <?php while ($row = $result->fetch_assoc()): ?>
         <form method="POST" class="note-card">
           <input type="hidden" name="report_id" value="<?= $row['report_id'] ?>">
@@ -86,7 +97,7 @@ $result = $conn->query("SELECT * FROM reports ORDER BY date_created DESC");
             <label><strong>Description:</strong></label>
             <textarea name="description"><?= htmlspecialchars($row['description']) ?></textarea>
 
-            <div class="note-time"><?= time_elapsed_string($row['date_created']) ?></div>
+            <div class="note-time"><?= time_elapsed_string($row['created_at']) ?></div>
 
             <div class="note-buttons">
               <button type="submit" name="update_report" class="btn-flag">Save</button>
