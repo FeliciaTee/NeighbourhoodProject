@@ -1,7 +1,36 @@
+<?php
+include 'connect.php';
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Delete function
+if (isset($_GET['delete'])) {
+    $report_id = intval($_GET['delete']);
+    $conn->query("DELETE FROM reports WHERE report_id = $report_id");
+    header("Location: adminreport.php");
+    exit();
+}
+
+// Update function
+if (isset($_POST['update'])) {
+    $report_id = intval($_POST['report_id']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+
+    $conn->query("UPDATE reports SET description = '$description' WHERE report_id = $report_id");
+    header("Location: adminreport.php");
+    exit();
+}
+
+// Fetch all reports
+$result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin Reports</title>
+    <title>Resident Reports</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="adminstyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -15,6 +44,11 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
         }
 
         .header {
@@ -35,11 +69,6 @@
             text-decoration: none;
             color: black;
             font-weight: bold;
-        }
-
-        .main-container {
-            flex: 1;
-            display: flex;
         }
 
         .sidebar {
@@ -84,6 +113,7 @@
         .content {
             flex: 1;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .report-box {
@@ -99,27 +129,27 @@
             flex: 3;
         }
 
-        .report-details a {
-            font-weight: bold;
-            color: #2c4eb0;
-            text-decoration: underline;
-        }
-
         .report-image {
             flex: 1;
-            background-color: #dcdcdc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #e2e2e2;
             border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
         }
 
         .btn-group {
             margin-top: 20px;
         }
 
-        .btn-group button {
+        .btn-group button,
+        .btn-group a {
             background-color: #c4edb7;
             border: 1px solid #89b383;
             padding: 8px 16px;
@@ -127,39 +157,14 @@
             border-radius: 5px;
             margin-right: 10px;
             cursor: pointer;
+            text-decoration: none;
+            color: black;
         }
 
-        .btn-group button:hover {
-            background-color: #aedc9c;
+        .btn-group a.delete-btn {
+            background-color: #e74c3c;
+            color: white;
         }
-
-        .close-btn {
-            background-color: white;
-            color: #1e7d3e;
-            border: 1px solid #1e7d3e;
-            padding: 8px 16px;
-            font-family: "Lucida Console";
-            border-radius: 5px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
-            background-color: #e1f5e8;
-        }
-
-        footer {
-            background-color: #b4cd63;
-            color: #000;
-            text-align: center;
-            padding: 15px;
-        }
-
-        #adminReport {
-            background-color: #c4edb7;
-            color: #016b5b;
-        }
-
     </style>
 </head>
 <body>
@@ -167,47 +172,42 @@
 <?php include("header.html"); ?>
 
 <div class="main-container">
-    <?php include("adminSidebar.php"); ?>
+<?php include("adminSidebar.php"); ?>
 
-    <div class="content">
-        <h2>Resident Reports</h2>
+<div class="content">
+    <h2>Resident Reports</h2>
 
-        <div class="report-box">
-            <div class="report-details">
-                <h3>Pothole Report</h3>
-                <p><a href="#">Large Pothole on Jalan Seri Ehsan 2</a></p>
-                <p><strong>Report ID:</strong> RPT20250611001<br>
-                   <strong>Resident ID:</strong> RES108235</p>
-                <p><strong>Description:</strong><br>
-                    A pothole approximately 60 cm wide and 15 cm deep is located in front of Surau Al-Hijrah, along Jalan Seri Ehsan 2. It has caused cars to swerve dangerously and poses a safety hazard, especially during rain when it becomes less visible.
-                </p>
-                <p>
-                    <strong>Category:</strong> Road Damage – Pothole<br>
-                    <strong>Location:</strong> Jalan Seri Ehsan 2, in front of Surau Al-Hijrah, Bandar Seri Ehsan, 42600 Jenjarom, Selangor.<br>
-                    <strong>Status:</strong> Pending Review<br>
-                    <strong>Date Created:</strong> 2025-06-11<br>
-                    <strong>Date Updated:</strong> 2025-06-11
-                </p>
-                <p><em>Updated: June 10, 2025</em></p>
-                <button class="close-btn" onclick="alert('Closing report...')">Close Report</button>
-            </div>
-            <div class="report-image">
-                <img src="placeholder.png" alt="Photo" width="100">
-            </div>
-        </div>
+    <?php while ($row = $result->fetch_assoc()): ?>
+    <div class="report-box">
+        <div class="report-details">
+            <form method="post">
+                <input type="hidden" name="report_id" value="<?= htmlspecialchars($row['report_id']) ?>">
 
-        <div class="btn-group">
-            <button>🔄 Update</button>
-            <button>🗑️ Delete</button>
+                <h3><?= htmlspecialchars($row['title']) ?></h3>
+                <p><strong>Resident ID:</strong> <?= htmlspecialchars($row['user_id']) ?></p>
+                <p><strong>Category:</strong> <?= htmlspecialchars($row['category']) ?></p>
+                <p><strong>Location:</strong> <?= htmlspecialchars($row['location']) ?></p>
+                <p><strong>Created At:</strong> <?= htmlspecialchars($row['created_at']) ?></p>
+
+                <p><strong>Description:</strong></p>
+                <textarea name="description"><?= htmlspecialchars($row['description']) ?></textarea>
+
+                <?php if (!empty($row['image'])): ?>
+                <div class="report-image">
+                    <img src="<?= htmlspecialchars($row['image']) ?>" alt="Report Image" width="150">
+                </div>
+                <?php endif; ?>
+
+                <div class="btn-group">
+                    <button type="submit" name="update">Update</button>
+                    <a href="adminreport.php?delete=<?= $row['report_id'] ?>" class="delete-btn" onclick="return confirm('Confirm delete?');">Delete</a>
+                </div>
+            </form>
         </div>
     </div>
+    <br>
+    <?php endwhile; ?>
 </div>
-
-<footer>
-    <p>&copy; 2025 The Neighborhood Community Center. All rights reserved.</p>
-</footer>
-
+</div>
 </body>
 </html>
-
-
