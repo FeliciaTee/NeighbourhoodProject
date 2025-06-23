@@ -6,20 +6,18 @@
 
     <style>
     body {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: "lucida console";
         background-color: #d2e38d88;
         margin: 0;
         padding: 0;
     }
 
     h1 {
-        font-family: "Lucida Console";
         color: #000000;
         text-align: center;
     }
 
     p {
-        font-family: "Lucida Console";
         font-size: 20px;
         text-align: center;
     }
@@ -56,6 +54,7 @@
         width: 50%;
         display: block;
         border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     button:hover {
@@ -69,17 +68,30 @@
         width: 550px;
         margin: 30px auto;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     .form-group {
         margin-bottom: 20px;
     }
 
-    
+    /* Header and Banner */
+    .main {
+        background-color: #90c064;
+    }
+
+    .main ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0 20px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        background-color: #90c064;
+    }
 
     .main ul li {
-        float: left;
-        margin: 0 15px;
+        margin: 0 10px;
     }
 
     .main ul li a {
@@ -91,14 +103,23 @@
         font-weight: bold;
     }
 
+    /* ✅ Remove hover only from active tab */
     .main ul li a:hover {
         background-color: #ddd;
         border-radius: 5px;
     }
 
+    .main ul li a.active,
+    .main ul li a.active:hover {
+        background-color: transparent;
+        cursor: default;
+        pointer-events: none;
+    }
+
     .banner {
-        height: 100px;
-        margin-right: 20px;
+        height: 80px;
+        width: 200px;
+        margin-right: auto;
     }
 
     footer {
@@ -139,18 +160,20 @@
 </head>
 
 <body>
+
+<!-- ✅ Header -->
 <div class="main">
     <ul>
         <img src="banner.png" alt="banner" class="banner">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="signup.html">Sign Up</a></li>
-        <li><a href="signup.html">Sign Up </a></li>
+        <li><a href="signup.html" class="active">Sign Up</a></li>
         <li><a href="adminlogin.php">Admin</a></li>
         <li><a href="emergency.html">EMERGENCY</a></li>
     </ul>
 </div>
 
+<!-- ✅ Sign Up Form -->
 <form action="signup.php" method="post" style="border:1px solid #ccc">
     <div class="container">
         <div class="signup-box">
@@ -193,6 +216,7 @@
     </div>
 </form>
 
+<!-- ✅ Footer -->
 <footer>
     <div class="contact-map-wrapper">
         <div class="contact-info">
