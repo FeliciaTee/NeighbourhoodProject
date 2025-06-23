@@ -170,7 +170,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="signup.html">Sign Up</a>
-      <a href="adminlogin.html">Admin</a>
+      <a href="admin.php">Admin</a>
       <a href="emergency.php">EMERGENCY</a>
     </nav>
   </header>
@@ -193,16 +193,14 @@
         Important announcements and messages from the community board.
       </p>
 
-      <!-- ✅ Borang Upload Nota -->
       <form id = "uploadnote" action="uploadnote.php" method="post">
         <input type="text" name="title" placeholder="Title" required><br>
         <textarea name="content" placeholder="Enter your note here..." rows="4" required></textarea><br>
         <button type="submit">Submit Note</button>
       </form>
 
-      <!-- ✅ Ruang untuk paparan nota -->
+
       <div class="announcements" id="notes-container">
-        <!-- Notes akan dimuatkan di sini secara automatik -->
       </div>
     </div>
   </div>
@@ -211,11 +209,10 @@
     © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
   </footer>
 
-      <!-- ✅ JavaScript for AJAX functionality -->
   <script>
-    // Submit the form without reloading the page
+    
     document.getElementById("uploadnote").addEventListener("submit", function(e) {
-      e.preventDefault(); // Prevent page reload
+      e.preventDefault(); 
       const formData = new FormData(this);
 
       fetch("uploadnote.php", {
@@ -224,12 +221,11 @@
       })
       .then(response => response.text())
       .then(() => {
-        loadNotes();      // Reload notes after submission
-        this.reset();     // Clear form
+        loadNotes();     
+        this.reset();     
       });
     });
 
-    // Load notes from server
     function loadNotes() {
       fetch("getnote.php")
         .then(response => response.text())
@@ -238,7 +234,7 @@
         });
     }
 
-    loadNotes(); // Initial load on page open
+    loadNotes();
   </script>
 </body>
 </html>
