@@ -398,6 +398,16 @@ $csrf_token = $_SESSION['csrf_token'];
                 width: 90%;
             }
         }
+
+        .new-badge {
+    background-color: #4CAF50;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
     </style>
 </head>
 <body>
@@ -441,11 +451,14 @@ $csrf_token = $_SESSION['csrf_token'];
 
     <div class="cards">
          <!-- Display user-posted notifications -->
-   <?php
+  <?php
 $userNotiSql = "SELECT un.*, r.username FROM user_notifications un 
                 JOIN residents r ON un.resident_id = r.resident_id 
                 ORDER BY un.created_at DESC";
 $userNotiResult = $conn->query($userNotiSql);
+
+// Get last login time
+$lastLogin = $_SESSION['last_login'];
 
 if ($userNotiResult->num_rows > 0) {
     while ($row = $userNotiResult->fetch_assoc()) {
@@ -454,11 +467,34 @@ if ($userNotiResult->num_rows > 0) {
         echo '<div class="card">';
         echo '<img src="' . htmlspecialchars($row['image_path']) . '" alt="User Notification">';
         echo '<div class="card-content">';
-        echo '<h4>' . htmlspecialchars($row['title']) . '</h4>';
+        echo '<h4>' . htmlspecialchars($row['title']);
+
+        // Show NEW badge if created_at > last_login
+        if (strtotime($row['created_at']) > strtotime($lastLogin)) {
+            echo ' <span class="new-badge">NEW</span>';
+        }
+
+        echo '</h4>';
         $preview = substr($row['description'], 0, 50) . '...';
         echo '<p>' . htmlspecialchars($preview) . '</p>';
         echo '<small style="color:gray;">Posted by ' . htmlspecialchars($row['username']) . ' on ' . date('d M Y, h:i A', strtotime($row['created_at'])) . '</small>';
-        echo '<br><button class="openModalBtn" data-modal="modal-' . $notiId . '">See Details</button>';
+        echo '<br>';
+echo '<div style="margin-top: 10px; display: flex; gap: 10px;">';
+
+// See Details button
+echo '<button class="openModalBtn" data-modal="modal-' . $notiId . '" style="background-color:rgb(21, 143, 41); color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer;">See Details</button>';
+
+// Delete button only if user is the owner
+if ($_SESSION['resident_id'] == $row['resident_id']) {
+    echo '<form action="delete_notification.php" method="POST" onsubmit="return confirm(\'Are you sure you want to delete this notification?\');">';
+    echo '<input type="hidden" name="notification_id" value="' . $row['notification_id'] . '">';
+    echo '<input type="hidden" name="image_path" value="' . htmlspecialchars($row['image_path']) . '">';
+    echo '<button type="submit" style="background-color: #e74c3c; color: white; padding: 6px 12px; border: none; border-radius: 5px; cursor: pointer;">Delete Notification</button>';
+    echo '</form>';
+}
+
+echo '</div>'; // end button container
+
         echo '</div>';
 
         // Comments section
@@ -485,28 +521,19 @@ if ($userNotiResult->num_rows > 0) {
         echo '</form>';
         echo '</div>'; // end comments-section
 
-        // Only show delete button to the owner
-        if ($_SESSION['resident_id'] == $row['resident_id']) {
-            echo '<form action="delete_notification.php" method="POST" onsubmit="return confirm(\'Are you sure you want to delete this notification?\');" style="margin-top: 10px;">';
-            echo '<input type="hidden" name="notification_id" value="' . $row['notification_id'] . '">';
-            echo '<input type="hidden" name="image_path" value="' . htmlspecialchars($row['image_path']) . '">';
-            echo '<button type="submit" style="background-color: #e74c3c; color: white; padding: 6px 12px; border: none; border-radius: 5px;">Delete</button>';
-            echo '</form>';
-        }
-
         echo '</div>'; // end card
 
         // Modal
-       echo '<div id="modal-' . $notiId . '" class="modal">';
-echo '<div class="modal-content">';
-echo '<span class="close">&times;</span>';
-echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
-echo '<p>' . nl2br(htmlspecialchars($row['description'])) . '</p>';
-echo '</div></div>';
-
+        echo '<div id="modal-' . $notiId . '" class="modal">';
+        echo '<div class="modal-content">';
+        echo '<span class="close">&times;</span>';
+        echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
+        echo '<p>' . nl2br(htmlspecialchars($row['description'])) . '</p>';
+        echo '</div></div>';
     }
 }
 ?>
+
 
 
         <!-- Cleanup Card -->
@@ -533,7 +560,7 @@ echo '</div></div>';
                         echo '<p style="color:#999;">No comments yet.</p>';
                     }
                 ?>
-                <form class="comment-form" action="submit_comment.php" method="POST">
+                <form class="comment-form" action="submitcomment.php" method="POST">
                     <input type="hidden" name="notification_id" value="cleanup">
                     <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                     <textarea name="comment_text" placeholder="Write your comment..." required></textarea>
