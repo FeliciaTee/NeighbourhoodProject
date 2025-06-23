@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$conn = new mysqli("localhost", "root", "", "neighborhoodproject");
+$conn = new mysqli("localhost", "root", "", "workshop project");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $admin['password'])) {
             $_SESSION['is_admin'] = true;
             $_SESSION['admin_id'] = $admin['admin_id'];
-            header("Location: uploadedreports.php");
+            header("Location: adminprofile.php");
             exit();
         } else {
             $error = "Incorrect password.";
@@ -80,7 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img src="banner.png" alt="banner" class="banner">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="logout.html">Log Out</a></li>
             </ul>
         </div>
 
