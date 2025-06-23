@@ -11,7 +11,7 @@ if (!$conn) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $title = trim($_POST['title']);
-    $user_id = trim($_POST['id']);
+    $username = trim($_POST['id']);
     $category = trim($_POST['category']);
     $location = trim($_POST['location']);
     $description = trim($_POST['description']);
