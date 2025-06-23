@@ -1,5 +1,4 @@
 <?php
-
 include 'connect.php';
 
 // Get form data
@@ -19,7 +18,6 @@ $sql = "INSERT INTO residents (username, name, email, address, phone, password)
 
 $stmt = $conn->prepare($sql);
 
-// Debug 
 if (!$stmt) {
     die("Prepare failed: " . $conn->error);
 }
