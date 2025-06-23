@@ -3,7 +3,6 @@
 <head>
     <title>Sign Up</title>
     <link rel="stylesheet" href="style.css">
-
     <style>
     body {
         font-family: "lucida console";
@@ -75,7 +74,6 @@
         margin-bottom: 20px;
     }
 
-    /* Header and Banner */
     .main {
         background-color: #90c064;
     }
@@ -103,7 +101,6 @@
         font-weight: bold;
     }
 
-    /* ✅ Remove hover only from active tab */
     .main ul li a:hover {
         background-color: #ddd;
         border-radius: 5px;
@@ -125,8 +122,6 @@
     footer {
         text-align: center;
         padding: 20px;
-        margin-top: 50px;
-        font-size: 14px;
         background-color: #ffffff;
     }
 
@@ -152,6 +147,11 @@
         border: 0;
     }
 
+    .divider {
+        border-top: 1px solid #ccc;
+        margin: 10px 0;
+    }
+
     .copyright {
         margin-top: 10px;
         font-size: 12px;
@@ -161,7 +161,7 @@
 
 <body>
 
-<!-- ✅ Header -->
+<!-- Header -->
 <div class="main">
     <ul>
         <img src="banner.png" alt="banner" class="banner">
@@ -173,7 +173,7 @@
     </ul>
 </div>
 
-<!-- ✅ Sign Up Form -->
+<!-- Sign Up Form -->
 <form action="signup.php" method="post" style="border:1px solid #ccc">
     <div class="container">
         <div class="signup-box">
@@ -216,7 +216,7 @@
     </div>
 </form>
 
-<!-- ✅ Footer -->
+<!-- Footer (from index.html) -->
 <footer>
     <div class="contact-map-wrapper">
         <div class="contact-info">
@@ -235,9 +235,12 @@
         </div>
 
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4286.120030556036!2d101.62837427529254!3d2.7696796972074273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdbe8e271dca95%3A0xf5327d71e6fb24cd!2s21%2C%20Jalan%20Bse%204%2F47%2C%20Bandar%20Seri%20Ehsan%2C%2042700%20Banting%2C%20Selangor!5e1!3m2!1sen!2smy!4v1749486906990!5m2!1sen!2smy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4286.120030556036!2d101.62837427529254!3d2.7696796972074273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdbe8e271dca95%3A0xf5327d71e6fb24cd!2s21%2C%20Jalan%20Bse%204%2F47%2C%20Bandar%20Seri%20Ehsan%2C%2042700%20Banting%2C%20Selangor!5e1!3m2!1sen!2smy!4v1749486906990!5m2!1sen!2smy" 
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
+
+    <div class="divider"></div>
 
     <div class="copyright">
         <div>English</div>
