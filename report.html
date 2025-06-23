@@ -4,80 +4,9 @@
   <meta charset="UTF-8">
   <title>REPORT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="residentstyle.css">
   </head>
   <style>
-    header {
-      background-color: #a5d66f;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 30px;
-    }
-
-    .left-header {
-      display: flex;
-      align-items: center;
-    }
-
-    .left-header img {
-      height: 150px;
-      margin-right: 30px;
-    }
-
-    .left-header span {
-      font-weight: bold;
-      color: black;
-      font-size: 16px;
-    }
-
-    
-    nav a {
-      margin: 0 12px;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .hero-container {
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .hero-left {
-      width: 200px;
-      background-color: #d5ecb3;
-      height: 100vh;
-      padding: 20px;
-      font-family: "Lucida Console";
-    }
-
-    .hero-left p {
-      margin-top: 0;
-    }
-    
-    .hero-left ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .hero-left ul li {
-      margin: 15px 0;
-    }
-
-    .hero-left ul li a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    .hero-left ul li a i {
-      margin-right: 8px;
-    }
-
     .hero-right {
       flex: 1;
       padding: 30px;
@@ -122,14 +51,12 @@
       gap: 30px;
     }
 
-    
     .form-wrapper {
     display: flex;
     justify-content: center;
     align-items: flex-start; 
     min-height: 100vh;       
     }
-
 
     .form-row .form-group {
       flex: 1;
@@ -163,33 +90,26 @@
       font-family: "Lucida Console";
     }
   </style>
+
 <body>
-
-
 <div class="main">
-          <img src="banner.png" alt="banner" class="banner">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="signup.html">Sign Up </a></li>
-                <li><a href="adminlogin.php">Admin</a></li>
-                <li><a href="emergency.html">EMERGENCY</a></li>
-            </ul>
-        </div>
+    <img src="banner.png" alt="banner" class="banner">
+    <ul>
+      <li><a href="logout.php">Log Out</a></li>
+    </ul>
+</div>
 
 
   <div class="hero-container">
     <div class="hero-left">
-
       <ul>
         <li><a href="resident.php">Resident Profile</a></li>
         <li><a href="report.html"><i class="fa fa-pencil"></i>Lodge Report</a></li>
         <li><a href="notescommunity.html"><i class="fa fa-sticky-note"></i>Community Notes</a></li>
         <li><a href="faq.html"><i class="fa fa-question-circle"></i>Help & Support</a></li>
-        <li><a href="notification.php"><i class="fa fa-bell"></i><strong> Notifications</strong></a></li>
+        <li><a href="notification.php"><i class="fa fa-bell"></i> Notifications</a></li>
       </ul>
     </div>
-
 
     <div class="hero-right">
       <div class="form-wrapper">
