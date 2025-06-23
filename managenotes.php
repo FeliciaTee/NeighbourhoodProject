@@ -79,4 +79,7 @@ $result = $conn->query("SELECT * FROM notes ORDER BY created_at DESC");
     </div>
   </div>
 </body>
+<footer>
+    © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
+</footer>
 </html>

@@ -105,6 +105,9 @@ $result = $conn->query("SELECT * FROM reports ORDER BY date_created DESC");
     </div>
   </div>
 </body>
+<footer>
+    © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
+</footer>
 </html>
 
 <?php
