@@ -34,7 +34,7 @@ if (isset($_GET['unflag'])) {
 }
 
 // Get all notes
-$result = $conn->query("SELECT * FROM notes ORDER BY date_created DESC");
+$result = $conn->query("SELECT * FROM notes ORDER BY created_at DESC");
 ?>
 
 <!DOCTYPE html>
