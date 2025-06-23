@@ -4,10 +4,7 @@ $username = "root";
 $password = ""; 
 $dbname = "neighbourhoodproject"; 
 
-$conn = mysqli_connect(hostname:$servername,
-                        username:$username,
-                        password:$password,
-                        database:$dbname); 
+$conn = mysqli_connect($servername,$username,$password,$dbname); 
 
 if (!$conn) { 
   die("Connection failed: " . mysqli_connect_error()); 
