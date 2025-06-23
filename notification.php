@@ -641,6 +641,9 @@ echo '</div>'; // end button container
         <img src="iklan1.png" alt="Clothing Sale Poster">
         <img src="rent.png" alt="Room for Rent Ad">
         <img src="iklan2.png" alt="Food Delivery Promo">
+        <img src="iklan3.png" alt="Cafe Grand Opening">
+        <img src="iklan4.png" alt="Volunteers Needed">
+        <img src="iklan5.png" alt="Kitten Adopting">
     </div>
 </div>
 
