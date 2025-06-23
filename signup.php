@@ -1,5 +1,5 @@
 <?php
-// Connect to database
+// Database connection
 $servername = "localhost";
 $dbusername = "root";
 $dbpassword = "";
@@ -13,27 +13,34 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get data from form
+// Get form data
 $username = $_POST['username'];
-$fullname = $_POST['fullname'];
+$name = $_POST['name'];
 $email = $_POST['email'];
 $address = $_POST['address'];
+$phone = $_POST['phone'];
 $password = $_POST['psw'];
 
 // Encrypt password
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// Insert into database (assuming table name = 'residents')
-$sql = "INSERT INTO residents (username, fullname, email, address, password)
-        VALUES (?, ?, ?, ?, ?)";
+// SQL with phone (no need to insert register_date if default exists)
+$sql = "INSERT INTO residents (username, name, email, address, phone, password)
+        VALUES (?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssss", $username, $fullname, $email, $address, $hashedPassword);
+
+// Debug if prepare fails
+if (!$stmt) {
+    die("Prepare failed: " . $conn->error);
+}
+
+$stmt->bind_param("ssssss", $username, $name, $email, $address, $phone, $hashedPassword);
 
 if ($stmt->execute()) {
-    echo "<script>alert('Sign up successful! You may now log in.'); window.location.href = 'index.html';</script>";
+    echo "<script>alert('Sign up successful!'); window.location.href='index.html';</script>";
 } else {
-    echo "Error: " . $stmt->error;
+    echo "Error executing statement: " . $stmt->error;
 }
 
 $stmt->close();
