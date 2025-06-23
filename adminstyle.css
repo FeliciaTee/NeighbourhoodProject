@@ -19,6 +19,7 @@ body {
   background-color: #90c064;
   justify-content: flex-start;
   max-width: 100%;
+  margin: 0;
 }
 
 .banner {
@@ -357,67 +358,67 @@ button {
 }
 
 .icon{
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
- .container {
-            padding: 16px;
-        }
+.container {
+  padding: 16px;
+}
 
-        footer {
-            background-color: #f8f8f8;
-            padding: 5px 20px 2px 2px;
-            border-top: 1px solid #e7e7e7;
-        }
+footer {
+  background-color: #b8ec9e;
+  padding: 5px 20px 2px 2px;
+  border-top: 1px solid #e7e7e7;
+}
 
-        .contact-map-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
+.contact-map-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
 
-        .contact-info {
-            flex: 1;
-            min-width: 250px;
-        }
+.contact-info {
+  flex: 1;
+  min-width: 250px;
+}
 
-        .contact-info div {
-            margin-bottom: 10px;
-        }
+.contact-info div {
+  margin-bottom: 10px;
+}
 
-        .contact-label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
+.contact-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
 
-        .map-container {
-            flex: 1;
-            min-width: 300px;
-        }
+.map-container {
+  flex: 1;
+  min-width: 300px;
+}
 
-        .divider {
-            border-top: 1px solid #ddd;
-            margin: 20px 0;
-        }
+.divider {
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
 
-        .copyright {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-        }
+.copyright {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
 
-        .header {
-            background-color: #addf83;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.header {
+  background-color: #addf83;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .note-card {
   display: flex;
