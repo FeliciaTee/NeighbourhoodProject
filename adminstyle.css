@@ -1,4 +1,8 @@
-header{  
+* {
+  box-sizing: border-box;
+}
+
+header{
     background-size: cover;
     background-position: center;
     min-height: 100px;
@@ -11,6 +15,8 @@ body {
   padding: 0;
   background-color: #d2e38d88;
   color: #333;
+  padding: 0;
+  margin: 0;
 }
 
 .main{
@@ -31,52 +37,6 @@ body {
   width: 200px;  
 }
 
-ul{
-    display: flex;
-    gap: 20px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color:#90c064;
-    font-family: lucida console;
-}
-
-h1{
-  align-items: center;
-  list-style-type: none;
-  display: flex;
-  background-color: #bcdd6f;
-  color: #000000;
-  justify-content: flex-start;
-  margin: 0;
-  padding: 10px 10px;
-}
-
-li {
-    float: left;
-    padding: 10px 14px;
-}
-  
-li a {
-    display: block;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-  
-li a:hover {
-    background-color: #74dc6b;
-}
-
-a:hover{
-    background-color: #74dc6b;
-}
-  
-.active {
-    background-color: #7ed264;
-}
-
 .user-info {
     background-color: #b7e685;
     padding: 10px 20px;
@@ -94,6 +54,40 @@ a:hover{
     display: flex;
     flex-direction: column;
 }
+
+ul {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #90c064;
+    font-family: lucida console;
+  }
+
+
+  
+  li {
+    float: left;
+    display: flex;
+    align-items: center;
+  }
+  
+  li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #74dc6b;
+  }
+  
+  .active {
+    background-color: #7ed264;
+  }
 
   .sidebar ul {
   list-style-type: none;
@@ -168,7 +162,8 @@ a:hover{
   .contact-box{
     width: 100%;
   }
-  box-shadow: 0 0 5px #ccc;
+  
+  box-shadow: 0 0 5px white;
 }
 
 .profile-header {
@@ -263,8 +258,7 @@ button {
 }
 
 .contact-box p {
-  margin: 20px 0;
-  padding: 10px 15px;
+  margin: 10px 0;
   font-size: 14px;
 }
 
@@ -323,16 +317,8 @@ button {
   background-color: #fff0b3;
 }
 
-.edit-btn:hover{
-    background-color: #e5cc69;
-}
-
 .delete-btn {
   background-color: #ffc0c0;
-}
-
-.delete-btn:hover{
-    background-color: #f48585;
 }
 
 .action-buttons button {
@@ -347,7 +333,7 @@ button {
 }
 
 .action-buttons button:hover {
-  background-color: #5dc55d;
+  background-color: #b1e6b1;
 }
 
 .icon-btn{
@@ -365,6 +351,11 @@ button {
 .container {
   padding: 16px;
 }
+
+ .container {
+            padding: 16px;
+        }
+
 
 footer {
   background-color: #b8ec9e;
@@ -514,3 +505,4 @@ footer {
   border-radius: 10px;
   margin-left: 20px;
 }
+
