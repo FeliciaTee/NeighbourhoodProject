@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
 include 'connect.php';
 
 if (!$conn) {
@@ -8,13 +9,11 @@ if (!$conn) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "<pre>";
-    echo "</pre>";
-
+    
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $address = trim($_POST['address']);
-    $password = $_POST['psw']; //pass enter will be same in db
+    $password = $_POST['psw']; 
 
     $sql = "INSERT INTO signup (name, email, address, password)
             VALUES ('$name', '$email', '$address', '$password')";
@@ -28,3 +27,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
