@@ -7,19 +7,19 @@ if (!$conn) {
 
 // Handle Delete
 if (isset($_GET['delete'])) {
-    $id = intval($_GET['delete']);
-    $conn->query("DELETE FROM reports WHERE id = $id");
+    $report_id = intval($_GET['delete']);
+    $conn->query("DELETE FROM reports WHERE report_id = $report_id");
     header("Location: uploadedreports.php");
     exit();
 }
 
 // Handle Update
 if (isset($_POST['update'])) {
-    $id = intval($_POST['id']);
+    $report_id = intval($_POST['report_id']);
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
 
-    $conn->query("UPDATE reports SET title = '$title', description = '$description' WHERE id = $id");
+    $conn->query("UPDATE reports SET title = '$title', description = '$description' WHERE report_id = $report_id");
     header("Location: uploadedreports.php");
     exit();
 }
@@ -77,7 +77,7 @@ $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
 
 <?php while ($row = $result->fetch_assoc()): ?>
     <form method="post">
-        <input type="hidden" name="id" value="<?= htmlspecialchars($row['id']) ?>">
+        <input type="hidden" name="report_id" value="<?= htmlspecialchars($row['report_id']) ?>">
 
         <p><strong>Title:</strong></p>
         <input type="text" name="title" value="<?= htmlspecialchars($row['title']) ?>">
@@ -100,10 +100,11 @@ $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
         <p><strong>Submitted At:</strong> <?= htmlspecialchars($row['created_at']) ?></p>
 
         <button type="submit" name="update">Update</button>
-        <a href="?delete=<?= htmlspecialchars($row['id']) ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
+        <a href="?delete=<?= htmlspecialchars($row['report_id']) ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
 
     </form>
 <?php endwhile; ?>
 
 </body>
 </html>
+
