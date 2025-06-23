@@ -1,3 +1,32 @@
+<?php
+include 'connect.php';
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Delete function
+if (isset($_GET['delete'])) {
+    $report_id = intval($_GET['delete']);
+    $conn->query("DELETE FROM reports WHERE report_id = $report_id");
+    header("Location: adminreport.php");
+    exit();
+}
+
+// Update function
+if (isset($_POST['update'])) {
+    $report_id = intval($_POST['report_id']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+
+    $conn->query("UPDATE reports SET description = '$description' WHERE report_id = $report_id");
+    header("Location: adminreport.php");
+    exit();
+}
+
+// Fetch all reports
+$result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,12 +129,6 @@
             flex: 3;
         }
 
-        .report-details a {
-            font-weight: bold;
-            color: #2c4eb0;
-            text-decoration: underline;
-        }
-
         .report-image {
             flex: 1;
             background-color: #e2e2e2;
@@ -116,16 +139,17 @@
             padding: 10px;
         }
 
-        .meta-info {
-            font-size: 12px;
-            color: #555;
+        textarea {
+            width: 100%;
+            height: 100px;
         }
 
         .btn-group {
             margin-top: 20px;
         }
 
-        .btn-group button {
+        .btn-group button,
+        .btn-group a {
             background-color: #c4edb7;
             border: 1px solid #89b383;
             padding: 8px 16px;
@@ -133,37 +157,13 @@
             border-radius: 5px;
             margin-right: 10px;
             cursor: pointer;
+            text-decoration: none;
+            color: black;
         }
 
-        .btn-group button:hover {
-            background-color: #aedc9c;
-        }
-
-        .close-btn {
-            background-color: white;
-            color: #1e7d3e;
-            border: 1px solid #1e7d3e;
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-family: "Lucida Console";
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .close-btn:hover {
-            background-color: #e1f5e8;
-        }
-
-        footer {
-            background-color: #b4cd63;
-            color: #000;
-            text-align: center;
-            padding: 15px;
-        }
-
-        #adminReport {
-            background-color: #c4edb7;
-            color: #016b5b;
+        .btn-group a.delete-btn {
+            background-color: #e74c3c;
+            color: white;
         }
     </style>
 </head>
@@ -172,46 +172,42 @@
 <?php include("header.html"); ?>
 
 <div class="main-container">
+<?php include("adminSidebar.php"); ?>
 
-    <?php include("adminSidebar.php"); ?>
+<div class="content">
+    <h2>Resident Reports</h2>
 
-    <div class="content">
-        <h2>Resident Reports</h2>
-        <h3>Road Damage Report</h3>
+    <?php while ($row = $result->fetch_assoc()): ?>
+    <div class="report-box">
+        <div class="report-details">
+            <form method="post">
+                <input type="hidden" name="report_id" value="<?= htmlspecialchars($row['report_id']) ?>">
 
-        <div class="report-box">
-            <div class="report-details">
-                <p><a href="#">Large Pothole on Jalan Seri Ehsan 2</a></p>
-                <p><strong>Report ID:</strong> RPT20250611001<br>
-                   <strong>Resident ID:</strong> RES108235</p>
-                <p>
-                    A pothole approximately 60 cm wide and 15 cm deep is located in front of Surau Al-Hijrah, along Jalan Seri Ehsan 2. It has caused cars to swerve dangerously and poses a safety hazard, especially during rain when it becomes less visible.
-                </p>
-                <div class="meta-info">
-                    Category: Road Damage – Pothole<br>
-                    Location: Jalan Seri Ehsan 2, Bandar Seri Ehsan<br>
-                    Status: Pending Review<br>
-                    Created At: 2025-06-11<br>
-                    Updated At: 2025-06-11
+                <h3><?= htmlspecialchars($row['title']) ?></h3>
+                <p><strong>Resident ID:</strong> <?= htmlspecialchars($row['user_id']) ?></p>
+                <p><strong>Category:</strong> <?= htmlspecialchars($row['category']) ?></p>
+                <p><strong>Location:</strong> <?= htmlspecialchars($row['location']) ?></p>
+                <p><strong>Created At:</strong> <?= htmlspecialchars($row['created_at']) ?></p>
+
+                <p><strong>Description:</strong></p>
+                <textarea name="description"><?= htmlspecialchars($row['description']) ?></textarea>
+
+                <?php if (!empty($row['image'])): ?>
+                <div class="report-image">
+                    <img src="<?= htmlspecialchars($row['image']) ?>" alt="Report Image" width="150">
                 </div>
-                <button class="close-btn" onclick="alert('Closing details...')">Close Details</button>
-            </div>
-            <div class="report-image">
-                <img src="placeholder.png" alt="Report Image" width="100">
-            </div>
-        </div>
+                <?php endif; ?>
 
-        <div class="btn-group">
-            <button>🔄 Update</button>
-            <button>🗑️ Delete</button>
+                <div class="btn-group">
+                    <button type="submit" name="update">Update</button>
+                    <a href="adminreport.php?delete=<?= $row['report_id'] ?>" class="delete-btn" onclick="return confirm('Confirm delete?');">Delete</a>
+                </div>
+            </form>
         </div>
     </div>
+    <br>
+    <?php endwhile; ?>
 </div>
-
-<footer>
-    <p>&copy; 2025 The Neighborhood Community Center. All rights reserved.</p>
-</footer>
-
+</div>
 </body>
 </html>
-
