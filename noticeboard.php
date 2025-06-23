@@ -49,8 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_notice'])) {
         <div class="main">
             <ul>
                 <img src="banner.png" alt="banner" width="200" height="100" class="banner">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
                 <li><a href="logout.html">Log Out</a></li>
             </ul>
         </div>
