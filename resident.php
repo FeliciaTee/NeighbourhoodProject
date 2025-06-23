@@ -41,6 +41,16 @@ if (!isset($_SESSION['username'])) {
 
     
        
+.sidebar {
+    width: 180px;
+    background-color: #d5ecb3;
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    overflow-y: auto;
+}
 
         .sidebar ul {
             list-style-type: none;
@@ -86,7 +96,7 @@ if (!isset($_SESSION['username'])) {
             text-align: center;
             background-color: #a4d373;
             padding: 20px;
-            margin-left: 230px;
+            margin-left: 180px;
         }
     </style>
 </head>
@@ -98,16 +108,15 @@ if (!isset($_SESSION['username'])) {
         <span>The Neighborhood: One-Stop Community Center</span>
     </div>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
+        
         <a href="logout.php">Log Out</a>
     </nav>
 </header>
 
 <div class="sidebar">
     <ul>
+        <li><a href="resident.php">Resident Profile</a></li>
         <li><a href="report.html">Lodge Report</a></li>
-        <li><a href="#">Community Events</a></li>
         <li><a href="notescommunity.html">Community Notes</a></li>
         <li><a href="faq.html">Help & Support</a></li>
         <li><a href="notification.html"><strong>Notifications</strong></a></li>
