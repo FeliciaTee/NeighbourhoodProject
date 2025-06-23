@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <title>Community Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
+<style>
     body {
       font-family: 'Lucida Console', monospace;
       margin: 0;
@@ -161,70 +160,51 @@
   </style>
 </head>
 <body>
-
   <header>
-    <div class="left-header">
-      <img src="banner.png" alt="Logo">
-    </div>
-    <nav>
-    
-      <a href="logout.php">Log Out</a>
-    </nav>
+    <img src="banner.png" alt="Logo" height="100">
+    <nav><a href="logout.php">Log Out</a></nav>
   </header>
 
   <div class="hero-container">
     <div class="hero-left">
       <ul>
-         <li><a href="resident.php">Resident Profile</a></li>
-        <li><a href="report.html"><i class="fa fa-pencil"></i>Lodge Report</a></li>
-        <li><a href="notescommunity.html"><i class="fa fa-sticky-note"></i>Community Notes</a></li>
-        <li><a href="faq.html"><i class="fa fa-question-circle"></i>Help & Support</a></li>
-        <li><a href="notification.php"><i class="fa fa-bell"></i><strong> Notifications</strong></a></li>
+        <li><a href="resident.php">Resident Profile</a></li>
+        <li><a href="report.html"><i class="fa fa-pencil"></i> Lodge Report</a></li>
+        <li><a href="notescommunity.php"><i class="fa fa-sticky-note"></i> Community Notes</a></li>
+        <li><a href="faq.html"><i class="fa fa-question-circle"></i> Help & Support</a></li>
+        <li><a href="notification.php"><i class="fa fa-bell"></i> Notifications</a></li>
       </ul>
     </div>
 
     <div class="hero-right">
-      <h2>Community Notes & Announcements</h2>
-      <p style="color: #555;">
-        Important announcements and messages from the community board.
-      </p>
-
-      <form id = "uploadnote" action="uploadnote.php" method="post">
+      <h2>Community Notes</h2>
+      <form id="uploadnote" method="post">
         <input type="text" name="title" placeholder="Title" required><br>
-        <textarea name="content" placeholder="Enter your note here..." rows="4" required></textarea><br>
+        <textarea name="content" placeholder="Write your note..." rows="4" required></textarea><br>
         <button type="submit">Submit Note</button>
       </form>
 
-
-      <div class="announcements" id="notes-container">
-      </div>
+      <div id="notes-container"></div>
     </div>
   </div>
 
-  <footer>
-    © 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
-  </footer>
+  <footer>© 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.</footer>
 
   <script>
-    
     document.getElementById("uploadnote").addEventListener("submit", function(e) {
-      e.preventDefault(); 
+      e.preventDefault();
       const formData = new FormData(this);
-
-      fetch("uploadnote.php", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.text())
-      .then(() => {
-        loadNotes();     
-        this.reset();     
-      });
+      fetch("uploadnote.php", { method: "POST", body: formData })
+        .then(res => res.text())
+        .then(() => {
+          this.reset();
+          loadNotes();
+        });
     });
 
     function loadNotes() {
       fetch("getnote.php")
-        .then(response => response.text())
+        .then(res => res.text())
         .then(data => {
           document.getElementById("notes-container").innerHTML = data;
         });

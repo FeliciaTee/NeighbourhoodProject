@@ -506,3 +506,50 @@ footer {
   margin-left: 20px;
 }
 
+.note-card {
+  border: 1px solid #ccc;
+  border-left: 5px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.note-card.important {
+  border-left-color: red;
+  background-color: #fff5f5;
+}
+
+.note-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.note-content {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.note-buttons a {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: black;
+}
+
+.btn-flag {
+  background-color: #ffd966;
+}
+
+.btn-flag:hover {
+  background-color: #ffe699;
+}
+
+.btn-delete {
+  background-color: #f08080;
+}
+
+.btn-delete:hover {
+  background-color: #ff9999;
+}
