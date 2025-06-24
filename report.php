@@ -10,7 +10,6 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
-    $password = $_POST['password'];
 
     $result = $conn->query("SELECT * FROM admin WHERE username = '$username'");
 

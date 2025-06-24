@@ -169,10 +169,10 @@
     <div class="hero-left">
       <ul>
         <li><a href="resident.php">Resident Profile</a></li>
-        <li><a href="report.html"><i class="fa fa-pencil"></i> Lodge Report</a></li>
-        <li><a href="notescommunity.php"><i class="fa fa-sticky-note"></i> Community Notes</a></li>
-        <li><a href="faq.html"><i class="fa fa-question-circle"></i> Help & Support</a></li>
-        <li><a href="notification.php"><i class="fa fa-bell"></i> Notifications</a></li>
+        <li><a href="report.html"> Lodge Report</a></li>
+        <li><a href="notescommunity.php">Community Notes</a></li>
+        <li><a href="faq.html"> Help & Support</a></li>
+        <li><a href="notification.php">Notifications</a></li>
       </ul>
     </div>
 
