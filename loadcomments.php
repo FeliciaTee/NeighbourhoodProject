@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "your_database_name");
+$mysqli = new mysqli("localhost", "root", "", "neighborhoodproject");
 if ($mysqli->connect_errno) {
     die("Database connection failed.");
 }

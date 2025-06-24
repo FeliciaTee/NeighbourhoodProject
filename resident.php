@@ -10,8 +10,28 @@ if (!isset($_SESSION['username'])) {
 <html lang="en">
 <head>
     <title>Resident Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="residentstyle.css">
     <style>
+        body {
+            font-family: 'Lucida Console', monospace;
+            margin: 0;
+            background-color: #d4e5b3;
+            color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #80c16d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
 
         .banner {
             display: flex;
@@ -39,18 +59,16 @@ if (!isset($_SESSION['username'])) {
             text-decoration: underline;
         }
 
-    
-       
-.sidebar {
-    width: 180px;
-    background-color: #d5ecb3;
-    position: fixed;
-    top: 70px;
-    bottom: 0;
-    left: 0;
-    padding: 20px;
-    overflow-y: auto;
-}
+        .sidebar {
+            width: 180px;
+            background-color: #d5ecb3;
+            position: fixed;
+            top: 70px;
+            bottom: 0;
+            left: 0;
+            padding: 20px;
+            overflow-y: auto;
+        }
 
         .sidebar ul {
             list-style-type: none;
@@ -108,7 +126,6 @@ if (!isset($_SESSION['username'])) {
         <span>The Neighborhood: One-Stop Community Center</span>
     </div>
     <nav>
-        
         <a href="logout.php">Log Out</a>
     </nav>
 </header>
@@ -116,7 +133,7 @@ if (!isset($_SESSION['username'])) {
 <div class="sidebar">
     <ul>
         <li><a href="resident.php">Resident Profile</a></li>
-        <li><a href="report.html">Lodge Report</a></li>
+        <li><a href="report.php">Lodge Report</a></li>
         <li><a href="notescommunity.php">Community Notes</a></li>
         <li><a href="faq.html">Help & Support</a></li>
         <li><a href="notification.php"><strong>Notifications</strong></a></li>
@@ -124,11 +141,11 @@ if (!isset($_SESSION['username'])) {
 </div>
 
 <div class="main">
-      <?php
+    <?php
     if (isset($_SESSION['update_success'])) {
         echo '<div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #c3e6cb;">
             Profile updated successfully!
-              </div>';
+        </div>';
         unset($_SESSION['update_success']);
     }
     ?>
@@ -143,27 +160,30 @@ if (!isset($_SESSION['username'])) {
     </div>
 
     <div class="card" style="text-align: center;">
-        <img src="uploads/<?php echo $_SESSION['profile_pic'] ?? 'default.jpeg'; ?>" 
+        <?php
+        $pic = (!empty($_SESSION['profile_pic']) && file_exists("uploads/" . $_SESSION['profile_pic']))
+            ? $_SESSION['profile_pic']
+            : 'default.jpg';
+        ?>
+        <img src="uploads/<?php echo $pic; ?>" 
              alt="Profile Picture" 
              style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
 
         <h2>Welcome, <?php echo $_SESSION['name']; ?>!</h2>
         <p><strong>Username:</strong> <?php echo $_SESSION['username']; ?></p>
         <p><strong>Email:</strong> <?php echo $_SESSION['email']; ?></p>
-         <p><strong>Phone:</strong> <?php echo $_SESSION['phone']; ?></p>
+        <p><strong>Phone:</strong> <?php echo $_SESSION['phone']; ?></p>
         <p><strong>Address:</strong> <?php echo $_SESSION['address']; ?></p>
         <p><strong>Resident ID:</strong> <?php echo $_SESSION['formatted_id']; ?></p>
     </div>
     
-<div style="margin-top: 20px;">
-    <button onclick="document.getElementById('editModal').style.display='block'" 
-        style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Edit Profile
-    </button>
+    <div style="margin-top: 20px;">
+        <button onclick="document.getElementById('editModal').style.display='block'" 
+            style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Edit Profile
+        </button>
+    </div>
 </div>
-</div>
-
-
 
 <footer>
     &copy; 2025 The Neighborhood Bandar Seri Ehsan. All rights reserved.
@@ -183,11 +203,11 @@ if (!isset($_SESSION['username'])) {
         <label>Username:</label>
         <input type="text" name="username" value="<?php echo $_SESSION['username']; ?>" required style="width: 100%; margin-bottom: 10px;"><br>
 
-    <label>Phone Number:</label>
-    <input type="text" name="phone" value="<?php echo $_SESSION['phone']; ?>" required style="width: 100%; margin-bottom: 10px;"><br>
+        <label>Phone Number:</label>
+        <input type="text" name="phone" value="<?php echo $_SESSION['phone']; ?>" required style="width: 100%; margin-bottom: 10px;"><br>
 
-    <label>Email:</label>
-    <input type="email" name="email" value="<?php echo $_SESSION['email']; ?>" required style="width: 100%; margin-bottom: 10px;"><br>
+        <label>Email:</label>
+        <input type="email" name="email" value="<?php echo $_SESSION['email']; ?>" required style="width: 100%; margin-bottom: 10px;"><br>
 
         <label>Address:</label>
         <input type="text" name="address" value="<?php echo $_SESSION['address']; ?>" required style="width: 100%; margin-bottom: 10px;"><br>
@@ -211,10 +231,6 @@ window.onclick = function(event) {
   }
 }
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
