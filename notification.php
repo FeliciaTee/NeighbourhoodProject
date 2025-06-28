@@ -429,7 +429,7 @@ $csrf_token = $_SESSION['csrf_token'];
         <li><a href="report.php">Lodge Report</a></li>
         <li><a href="notescommunity.php">Community Notes</a></li>
         <li><a href="faq.html">Help & Support</a></li>
-        <li><a href="notification.php"><strong>Notifications</strong></a></li>
+        <li><a href="notification.php"><strong>Announcement</strong></a></li>
     </ul>
 </div>
 
