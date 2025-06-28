@@ -24,7 +24,7 @@ if (isset($_POST['update'])) {
 }
 
 // Fetch all reports
-$result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
+$result = $conn->query("SELECT * FROM reports ORDER BY date_created DESC");
 ?>
 
 <!DOCTYPE html>
@@ -187,7 +187,7 @@ $result = $conn->query("SELECT * FROM reports ORDER BY created_at DESC");
                 <p><strong>Resident ID:</strong> <?= htmlspecialchars($row['user_id']) ?></p>
                 <p><strong>Category:</strong> <?= htmlspecialchars($row['category']) ?></p>
                 <p><strong>Location:</strong> <?= htmlspecialchars($row['location']) ?></p>
-                <p><strong>Created At:</strong> <?= htmlspecialchars($row['created_at']) ?></p>
+                <p><strong>Created At:</strong> <?= htmlspecialchars($row['date_created']) ?></p>
 
                 <p><strong>Description:</strong></p>
                 <textarea name="description"><?= htmlspecialchars($row['description']) ?></textarea>

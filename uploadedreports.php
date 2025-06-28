@@ -95,7 +95,7 @@ $result = $conn->query($sql);
             <label><strong>Description:</strong></label>
             <textarea name="description"><?= htmlspecialchars($row['description']) ?></textarea>
 
-            <div class="note-time"><?= time_elapsed_string($row['created_at']) ?></div>
+            <div class="note-time"><?= time_elapsed_string($row['date_created']) ?></div>
 
             <div class="note-buttons">
               <button type="submit" name="update_report" class="btn-flag">Save</button>
