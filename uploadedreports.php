@@ -39,6 +39,23 @@ if (!empty($search)) {
 }
 $sql .= " ORDER BY date_created DESC";
 $result = $conn->query($sql);
+
+// ================= GRAPH DATA SECTION ===================
+$allCategories = ['road damage', 'garbage issue', 'streetlight issues', 'water supplies', 'others'];
+$categoryTotals = array_fill_keys($allCategories, 0);
+
+$categoryQuery = $conn->query("SELECT category, COUNT(*) as total FROM reports GROUP BY category");
+while ($row = $categoryQuery->fetch_assoc()) {
+    $cat = strtolower($row['category']);
+    if (in_array($cat, $allCategories)) {
+        $categoryTotals[$cat] = $row['total'];
+    } else {
+        $categoryTotals['others'] += $row['total'];
+    }
+}
+
+$categoryData['labels'] = array_map('ucwords', array_keys($categoryTotals));
+$categoryData['totals'] = array_values($categoryTotals);
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +64,7 @@ $result = $conn->query($sql);
   <meta charset="UTF-8">
   <title>Uploaded Reports</title>
   <link rel="stylesheet" href="adminstyle.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="main">
@@ -79,6 +97,36 @@ $result = $conn->query($sql);
         <button type="submit">Search</button>
       </form>
 
+      <!-- ================= GRAPH SECTION ================= -->
+      <canvas id="reportCategoryChart" width="600" height="300" style="margin-bottom: 30px;"></canvas>
+
+      <script>
+        const ctx = document.getElementById('reportCategoryChart').getContext('2d');
+        const reportCategoryChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: <?= json_encode($categoryData['labels']) ?>,
+            datasets: [{
+              label: 'Total Reports by Category',
+              data: <?= json_encode($categoryData['totals']) ?>,
+              backgroundColor: 'rgba(128, 193, 109, 0.6)',
+              borderColor: 'rgba(51, 105, 30, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                stepSize: 1
+              }
+            }
+          }
+        });
+      </script>
+
+      <!-- ================= REPORT CARD LIST ================= -->
       <?php while ($row = $result->fetch_assoc()): ?>
         <form method="POST" class="note-card">
           <input type="hidden" name="report_id" value="<?= $row['report_id'] ?>">
@@ -151,3 +199,4 @@ function time_elapsed_string($datetime, $full = false) {
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 ?>
+

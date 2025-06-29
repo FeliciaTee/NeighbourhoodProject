@@ -9,12 +9,16 @@ if ($conn->connect_error) {
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $conn->real_escape_string($_POST['username']);
-    $password = $_POST['password'];
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-    $result = $conn->query("SELECT * FROM admin WHERE username = '$username'");
+    // Guna prepared statement untuk keselamatan
+    $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
+    if ($result && $result->num_rows === 1) {
         $admin = $result->fetch_assoc();
         if (password_verify($password, $admin['password'])) {
             $_SESSION['is_admin'] = true;
@@ -27,7 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $error = "Admin not found.";
     }
+
+    $stmt->close();
 }
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="adminstyle.css">
     <title>Admin Login</title>
     <style>
-
         .login-box {
             background-color: white;
             width: 400px;
@@ -64,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border: none;
             cursor: pointer;
         }
-        .login-box button:hover{
-            background-color:rgb(6, 133, 86);
+        .login-box button:hover {
+            background-color: rgb(6, 133, 86);
         }
         .error {
             color: red;
@@ -76,20 +82,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <div class="main">
-            <ul>
-                <img src="banner.png" alt="banner" class="banner">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul>
-        </div>
-
+    <ul>
+        <img src="banner.png" alt="banner" class="banner">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+    </ul>
 </div>
 
 <div class="login-box">
     <h2>Admin Login</h2>
 
-    <?php if ($error): ?>
-        <div class="error"><?= $error ?></div>
+    <?php if (!empty($error)): ?>
+        <div class="error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
     <form method="POST">
