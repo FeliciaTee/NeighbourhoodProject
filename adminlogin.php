@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result && $result->num_rows === 1) {
         $admin = $result->fetch_assoc();
-        if (password_verify($password, $admin['password'])) {
+        if ($password === $admin['password']) {
             $_SESSION['is_admin'] = true;
             $_SESSION['admin_id'] = $admin['admin_id'];
             header("Location: adminprofile.php");
